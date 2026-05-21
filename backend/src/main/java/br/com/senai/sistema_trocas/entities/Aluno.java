@@ -30,7 +30,7 @@ public class Aluno {
     @Column(name = "email", nullable = false, unique = true, length = 200)
     private String email;
 
-    @Column(name = "senha", nullable = false, length = 50)
+    @Column(name = "senha", nullable = false, length = 200)
     private String senha;
 
     @ManyToOne

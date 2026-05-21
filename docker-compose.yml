@@ -1,0 +1,28 @@
+services:
+  db_sistema-trocas-alunos:
+    image: postgres:15
+    container_name: postgres_pbl_sistema-trocas-alunos
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: db_sistema-trocas-alunos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_pbl_sistema-trocas-alunos
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin12345
+    ports:
+      - "8081:80"
+    depends_on:
+      - db_sistema-trocas-alunos
+
+volumes:
+  postgres_data:
