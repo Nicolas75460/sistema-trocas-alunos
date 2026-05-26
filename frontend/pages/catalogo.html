@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Trocas - SENAI Exchange</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/catalogo.css">
+</head>
+<body class="bg-gray">
+    <!-- ============================================
+         HEADER / NAVEGAÇÃO PRINCIPAL
+         ============================================ -->
+    <header class="header">
+        <!-- Logo do sistema -->
+        <a href="explorar.html" class="header__logo">
+            <img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" class="header__logo-img">
+        </a>
+
+        <!-- Navegação Principal -->
+        <nav class="header__nav">
+            <a href="explorar.html" class="header__nav-link">Explorar</a>
+            <a href="meus-pedidos.html" class="header__nav-link">Trocas</a>
+            <a href="chat.html" class="header__nav-link">Mensagens</a>
+            <a href="novo-anuncio.html" class="header__nav-link">Novo Anuncio</a>
+        </nav>
+
+        <!-- Ações do Header -->
+        <div class="header__actions">
+            <div class="header__search">
+                <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" placeholder="Buscar..."/>
+            </div>
+            <a href="login.html" class="auth-header-link">Entrar</a>
+            <a href="cadastro.html" class="auth-header-link">Criar Conta</a>
+        </div>
+    </header>
+
+    <!-- CONTAINER PRINCIPAL: LAYOUT 2 COLUNAS -->
+    <div class="catalogo-layout container" style="max-width: 1200px; margin: 0 auto; padding-top: var(--espacamento-xl);">
+
+        <!-- SIDEBAR DE FILTROS -->
+        <aside class="sidebar-filtros">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Categorias</h3>
+                <p class="sidebar-subtitle">Filtros de Troca</p>
+                <ul class="filter-list">
+                    <li class="filter-item active">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Ferramentas
+                    </li>
+                    <li class="filter-item">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+                        Eletrônicos
+                    </li>
+                    <li class="filter-item">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Livros
+                    </li>
+                    <li class="filter-item">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        EPIs
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h4 class="sidebar-subtitle-sm">ESTADO DO ITEM</h4>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="custom-checkbox">
+                        Novo
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="custom-checkbox">
+                        Semi-novo
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="custom-checkbox">
+                        Usado
+                    </label>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-link">
+                    <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Configurações
+                </a>
+                <a href="#" class="sidebar-link">
+                    <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Suporte
+                </a>
+            </div>
+        </aside>
+
+        <!-- ÁREA PRINCIPAL -->
+        <main class="catalogo-main">
+            <div class="catalogo-header">
+                <div>
+                    <h1 class="catalogo-title">Catálogo de Trocas</h1>
+                    <p class="catalogo-subtitle">Encontre materiais técnicos, ferramentas e livros compartilhados<br>pela comunidade SENAI.</p>
+                </div>
+                <div class="catalogo-sort">
+                    <span class="sort-label">ORDENAR POR</span>
+                    <div class="sort-dropdown">
+                        <span class="sort-value">Mais Recentes</span>
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRID DE PRODUTOS -->
+            <div class="products-grid">
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=500&h=400&fit=crop');">
+                        <div class="product-tags">
+                            <span class="tag tag--white">NOVO</span>
+                            <span class="tag tag--orange">ELETRO</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Multímetro Digital Fluke 115</h3>
+                        <div class="product-user">
+                            <div class="user-avatar-wrap"><svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                            <span class="user-name">Ricardo Silva</span>
+                            <svg class="verified-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <button class="btn btn--primary btn--full">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&h=400&fit=crop');">
+                        <div class="product-tags">
+                            <span class="tag tag--white">USADO</span>
+                            <span class="tag tag--blue">LIVROS</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Mecânica Geral - 12ª Edição</h3>
+                        <div class="product-user">
+                            <div class="user-avatar-wrap"><svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                            <span class="user-name">Ana Paula Santos</span>
+                            <svg class="verified-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <button class="btn btn--primary btn--full">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=400&fit=crop');">
+                        <div class="product-tags">
+                            <span class="tag tag--white">NOVO</span>
+                            <span class="tag tag--orange">EPI</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bota de Segurança Bracol T42</h3>
+                        <div class="product-user">
+                            <div class="user-avatar-wrap"><svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                            <span class="user-name">Marcos Oliveira</span>
+                            <svg class="verified-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <button class="btn btn--primary btn--full">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=500&h=400&fit=crop');">
+                        <div class="product-tags">
+                            <span class="tag tag--white">USADO</span>
+                            <span class="tag tag--blue">FERRAMENTAS</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Jogo de Chaves Combinadas</h3>
+                        <div class="product-user">
+                            <div class="user-avatar-wrap"><svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                            <span class="user-name">Juliana Costa</span>
+                            <svg class="verified-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <button class="btn btn--primary btn--full">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500&h=400&fit=crop');">
+                        <div class="product-tags">
+                            <span class="tag tag--white">SEMINOVO</span>
+                            <span class="tag tag--orange">LAB</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Osciloscópio Analógico 20MHz</h3>
+                        <div class="product-user">
+                            <div class="user-avatar-wrap"><svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                            <span class="user-name">Prof. Eduardo</span>
+                            <svg class="verified-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <button class="btn btn--primary btn--full">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=500&h=400&fit=crop');">
+                        <div class="product-tags">
+                            <span class="tag tag--white">NOVO</span>
+                            <span class="tag tag--orange">EPI</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Óculos Proteção Anti-Risco</h3>
+                        <div class="product-user">
+                            <div class="user-avatar-wrap"><svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                            <span class="user-name">Carla Mendes</span>
+                            <svg class="verified-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <button class="btn btn--primary btn--full">Ver Detalhes</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Botão Flutuante (Anunciar Item) -->
+            <button class="btn-announce" onclick="window.location.href='novo-anuncio.html'">
+                <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                Anunciar Item
+            </button>
+        </main>
+    </div>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__logo"><img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" style="height:24px;"/></div>
+                    <p class="footer__tagline">Empoderando a próxima geração de profissionais da indústria através do compartilhamento colaborativo de equipamentos e comércio sustentável entre estudantes.</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-icon">
+                            <svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        </a>
+                        <a href="#" class="footer__social-icon">
+                            <svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Mercado</h4>
+                    <a href="#" class="footer__column-link">Ver Todos</a>
+                    <a href="#" class="footer__column-link">Como Funciona</a>
+                    <a href="#" class="footer__column-link">Dicas de Segurança</a>
+                    <a href="#" class="footer__column-link">Casos de Sucesso</a>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Comunidade</h4>
+                    <a href="#" class="footer__column-link">Central do Aluno</a>
+                    <a href="#" class="footer__column-link">Ganhar Pontos</a>
+                    <a href="#" class="footer__column-link">Regras</a>
+                    <a href="#" class="footer__column-link">Embaixadores</a>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Suporte</h4>
+                    <a href="#" class="footer__column-link">Central de Ajuda</a>
+                    <a href="#" class="footer__column-link">Reportar Problema</a>
+                    <a href="#" class="footer__column-link">Perguntas Frequentes</a>
+                    <a href="#" class="footer__column-link">Contato</a>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Legal</h4>
+                    <a href="#" class="footer__column-link">Política de Privacidade</a>
+                    <a href="#" class="footer__column-link">Termos de Uso</a>
+                    <a href="#" class="footer__column-link">Política de Cookies</a>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <span>© 2024 SENAI Exchange. Todos os direitos reservados.</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

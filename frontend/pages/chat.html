@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- ============================================
+         SENAI Exchange - Tela de Chat/Conversa
+         Página de mensagens entre usuários
+         ============================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens | SENAI Exchange</title>
+
+
+    <!-- Arquivos CSS separados -->
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/chat.css">
+</head>
+
+<body>
+    <!-- ============================================
+         HEADER / NAVEGAÇÃO PRINCIPAL
+         ============================================ -->
+    <header class="header">
+        <!-- Logo do sistema -->
+        <a href="perfil.html" class="header__logo">
+            <img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" class="header__logo-img">
+        </a>
+        
+        <!-- Navegação Principal -->
+        <nav class="header__nav">
+            <a href="perfil.html" class="header__nav-link">Explorar</a>
+            <a href="meus-pedidos.html" class="header__nav-link">Trocas</a>
+            <a href="chat.html" class="header__nav-link">Mensagens</a>
+            <a href="novo-anuncio.html" class="header__nav-link">Novo Anuncio</a>
+        </nav>
+        
+        <!-- Ações do Header -->
+        <div class="header__actions">
+            <!-- Campo de busca -->
+            <div class="header__search">
+                <!-- Ícone de lupa -->
+                <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" placeholder="Buscar...">
+            </div>
+            
+            <!-- Ícone de notificações -->
+            <button class="header__icon">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                </svg>
+            </button>
+            
+            <!-- Avatar do usuário -->
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Seu perfil" class="header__avatar">
+        </div>
+    </header>
+
+    <!-- ============================================
+         CONTAINER PRINCIPAL DO CHAT
+         Divide a tela em sidebar de conversas e área de chat
+         ============================================ -->
+    <main class="chat-container">
+
+        <!-- ============================================
+             SIDEBAR DE CONVERSAS
+             Lista de todas as conversas do usuário
+             ============================================ -->
+        <aside class="chat-sidebar">
+            <!-- Cabeçalho da sidebar (Estilo WhatsApp) -->
+            <div class="chat-sidebar__header">
+                <!-- Avatar do usuário atual -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Seu perfil" class="chat-sidebar__user-avatar">
+                
+                <!-- Ações -->
+                <div class="chat-sidebar__actions">
+                    <button class="chat-action-btn" title="Status">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                    <button class="chat-action-btn" title="Nova Conversa">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    </button>
+                    <button class="chat-action-btn" title="Menu">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lista de conversas -->
+            <div class="chat-sidebar__list">
+
+                <!-- Conversa 1: Beatriz Silva (Ativa) -->
+                <div class="conversation-item conversation-item--active">
+                    <!-- Avatar com indicador online -->
+                    <div class="conversation-item__avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
+                            alt="Beatriz Silva">
+                        <span class="online-indicator"></span>
+                    </div>
+                    <!-- Conteúdo da conversa -->
+                    <div class="conversation-item__content">
+                        <div class="conversation-item__header">
+                            <span class="conversation-item__name">Beatriz Silva</span>
+                            <span class="conversation-item__time">Agora mesmo</span>
+                        </div>
+                        <p class="conversation-item__preview">O multímetro ainda está disponível para troca?</p>
+                        <span class="conversation-item__trade-tag">Troca: Multímetro</span>
+                    </div>
+                </div>
+
+                <!-- Conversa 2: Marcos Oliveira -->
+                <div class="conversation-item">
+                    <!-- Avatar com foto -->
+                    <div class="conversation-item__avatar">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
+                            alt="Marcos Oliveira">
+                    </div>
+                    <!-- Conteúdo da conversa -->
+                    <div class="conversation-item__content">
+                        <div class="conversation-item__header">
+                            <span class="conversation-item__name">Marcos Oliveira</span>
+                            <span class="conversation-item__time">2h atrás</span>
+                        </div>
+                        <p class="conversation-item__preview">Compartilhou uma foto</p>
+                        <span class="conversation-item__trade-tag">Troca: Kit Arduino</span>
+                    </div>
+                </div>
+
+                <!-- Conversa 3: Ricardo Costa (sem foto, usa iniciais) -->
+                <div class="conversation-item">
+                    <!-- Avatar com iniciais -->
+                    <div class="conversation-item__avatar">
+                        <div class="conversation-item__avatar-initials">RC</div>
+                    </div>
+                    <!-- Conteúdo da conversa -->
+                    <div class="conversation-item__content">
+                        <div class="conversation-item__header">
+                            <span class="conversation-item__name">Ricardo Costa</span>
+                            <span class="conversation-item__time">Ontem</span>
+                        </div>
+                        <p class="conversation-item__preview">Obrigado pelo livro! Está em ótimo estado...</p>
+                        <span class="conversation-item__trade-tag">Troca: Mecânica Vol 1</span>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- ============================================
+             ÁREA PRINCIPAL DO CHAT
+             Onde as mensagens são exibidas
+             ============================================ -->
+        <section class="chat-main">
+
+            <!-- ============================================
+                 HEADER DO CHAT
+                 Informações do contato e item sendo negociado
+                 ============================================ -->
+            <header class="chat-header">
+                <!-- Informações do contato -->
+                <div class="chat-header__contact">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
+                        alt="Beatriz Silva" class="chat-header__avatar">
+                    <div class="chat-header__info">
+                        <div class="chat-header__name">Beatriz Silva</div>
+                        <div class="chat-header__status">
+                            <span class="chat-header__online">Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ações do chat (Estilo WhatsApp) -->
+                <div class="chat-header__actions">
+                    <button class="chat-header__finalize-btn">Finalizar Troca</button>
+                    <button class="chat-action-btn" title="Buscar">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </button>
+                    <button class="chat-action-btn" title="Menu">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- ============================================
+                 ÁREA DE MENSAGENS
+                 Container scrollável com as mensagens
+                 ============================================ -->
+            <div class="chat-messages">
+
+                <!-- Separador de data -->
+                <div class="chat-messages__date-separator">
+                    <span>Hoje</span>
+                </div>
+
+                <!-- Mensagem recebida 1 -->
+                <div class="message message--received">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
+                        alt="Beatriz Silva" class="message__avatar">
+                    <div class="message__content">
+                        <div class="message__bubble">
+                            Olá! Vi sua postagem sobre o Multímetro na categoria Eletrônicos. Ainda está disponível para
+                            troca?
+                        </div>
+                        <div class="message__time">10:42</div>
+                    </div>
+                </div>
+
+                <!-- Mensagem enviada 1 -->
+                <div class="message message--sent">
+                    <div class="message__avatar-initials">EU</div>
+                    <div class="message__content">
+                        <div class="message__bubble">
+                            Ei Beatriz! Sim, está. Estou procurando alguns livros-texto específicos de hidráulica ou
+                            talvez uma estação de soldagem. Você tem algo assim?
+                        </div>
+                        <div class="message__time">
+                            10:45
+                            <span class="message__read-check">✓✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensagem recebida 2 (com imagem) -->
+                <div class="message message--received">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
+                        alt="Beatriz Silva" class="message__avatar">
+                    <div class="message__content">
+                        <div class="message__image-container">
+                            <p class="message__image-text">Na verdade, eu tenho esta Estação de Soldagem Weller que não
+                                estou mais usando. Está quase nova!</p>
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tela%20de%20Chat%20Conversa-NX6M91zhBxPzU1R3kG1GQkkDY4fVv9.jpg"
+                                alt="Estação de Soldagem Weller" class="message__image"
+                                style="max-height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="message__time">10:48</div>
+                    </div>
+                </div>
+
+                <!-- Sugestão de troca -->
+                <div class="trade-suggestion">
+                    <!-- Ícone de alerta/swap -->
+                    <svg class="trade-suggestion__icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                    </svg>
+                    <span class="trade-suggestion__text">Sugestão de Troca: Fluke 117 pela Estação Weller</span>
+                </div>
+
+                <!-- Indicador de digitando -->
+                <div class="typing-indicator">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
+                        alt="Beatriz Silva" class="typing-indicator__avatar">
+                    <div class="typing-indicator__dots">
+                        <span class="typing-indicator__dot"></span>
+                        <span class="typing-indicator__dot"></span>
+                        <span class="typing-indicator__dot"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ============================================
+                 INPUT DE MENSAGEM
+                 Campo para digitar e enviar mensagens
+                 ============================================ -->
+            <div class="chat-input">
+                <div class="chat-input__container">
+                    <!-- Campo de texto com ações -->
+                    <div class="chat-input__field">
+                        <!-- Botão de anexo -->
+                        <button class="chat-input__action-btn">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                            </svg>
+                        </button>
+
+                        <!-- Input de texto -->
+                        <input type="text" placeholder="Digite sua mensagem...">
+
+                        <!-- Ações adicionais -->
+                        <div class="chat-input__actions">
+                            <!-- Emoji -->
+                            <button class="chat-input__action-btn">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </button>
+                            <!-- Imagem -->
+                            <button class="chat-input__action-btn">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Botão de enviar -->
+                    <button class="chat-input__send-btn">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Aviso de segurança -->
+                <p class="chat-input__safety-notice">
+                    Mantenha as trocas na plataforma para Proteção e Garantia de Segurança
+                </p>
+            </div>
+
+        </section>
+    </main>
+</body>
+
+</html>

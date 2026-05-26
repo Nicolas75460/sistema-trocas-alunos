@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil | Troca SENAI</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/perfil.css">
+</head>
+<body>
+    <!-- ============================================
+         HEADER / NAVEGAÇÃO PRINCIPAL
+         ============================================ -->
+    <header class="header">
+        <!-- Logo do sistema -->
+        <a href="perfil.html" class="header__logo">
+            <img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" class="header__logo-img">
+        </a>
+        
+        <!-- Navegação Principal -->
+        <nav class="header__nav">
+            <a href="perfil.html" class="header__nav-link">Explorar</a>
+            <a href="meus-pedidos.html" class="header__nav-link">Trocas</a>
+            <a href="chat.html" class="header__nav-link">Mensagens</a>
+            <a href="novo-anuncio.html" class="header__nav-link">Novo Anuncio</a>
+        </nav>
+        
+        <!-- Ações do Header -->
+        <div class="header__actions">
+            <!-- Campo de busca -->
+            <div class="header__search">
+                <!-- Ícone de lupa -->
+                <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" placeholder="Buscar...">
+            </div>
+            
+            <!-- Ícone de notificações -->
+            <button class="header__icon">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                </svg>
+            </button>
+            <!-- Avatar do usuário -->
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Seu perfil" class="header__avatar">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="perfil-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Categorias</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item sidebar__item--active">
+                        <svg class="sidebar__item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                        </svg>
+                        <span>Todos</span>
+                    </li>
+                    <li class="sidebar__item">
+                        <svg class="sidebar__item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span>Ferramentas</span>
+                    </li>
+                    <li class="sidebar__item">
+                        <svg class="sidebar__item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                        </svg>
+                        <span>Eletrônicos</span>
+                    </li>
+                    <li class="sidebar__item">
+                        <svg class="sidebar__item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                        <span>Materiais de Estudo</span>
+                    </li>
+                    <li class="sidebar__item">
+                        <svg class="sidebar__item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        <span>Uniformes</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Conta</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <svg class="sidebar__item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span>Configurações</span>
+                    </li>
+                    <li class="sidebar__item">
+                        <svg class="sidebar__item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Central de Ajuda</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Profile Card -->
+            <section class="profile-card">
+                <div class="profile-card__avatar-container">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQHuezd6qtecAQ/profile-displayphoto-crop_800_800/B4DZ0DJHyoKoAI-/0/1773874217907?e=1781136000&v=beta&t=-T_xIx94_-34WEdWUn7DDqesmgTBasU8LVETwtIU_IU" alt="Gabriel Santos" class="profile-card__avatar">
+                    <div class="profile-card__verified-badge">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="profile-card__info">
+                    <div class="profile-card__header">
+                        <h1 class="profile-card__name">Guilherme Aparecido</h1>
+                        <span class="profile-card__course-badge">Estudante de Desenvolvimento de Sistemas</span>
+                    </div>
+                    <div class="profile-card__meta">
+                        <div class="profile-card__rating">
+                            <svg class="icon icon--sm profile-card__rating-star" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span class="profile-card__rating-value">4.9</span>
+                            <span>(24 trocas)</span>
+                        </div>
+                    </div>
+                    <div class="profile-card__stats">
+                        <div class="profile-stat">
+                            <span class="profile-stat__value">23</span>
+                            <span class="profile-stat__label">Itens</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="profile-stat__value">47</span>
+                            <span class="profile-stat__label">Trocas</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="profile-stat__value">5</span>
+                            <span class="profile-stat__label">Reservas</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Listings Section -->
+            <section class="listings-section">
+                <div class="listings-section__header">
+                    <h2 class="listings-section__title">Minhas Listagens Ativas</h2>
+                    <a href="#" class="listings-section__view-all">Ver tudo</a>
+                </div>
+                <div class="listings-grid">
+                    <!-- Product Card 1 -->
+                    <article class="product-card">
+                        <div class="product-card__image-container">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Multímetro Digital" class="product-card__image">
+                        </div>
+                        <div class="product-card__content">
+                            <span class="product-card__category product-card__category--tools">Ferramentas</span>
+                            <h3 class="product-card__name">Multímetro Digital Digital</h3>
+                            <div class="product-card__footer">
+                                <span class="product-card__date">Hoje</span>
+                                <span class="product-card__status product-card__status--active">Ativo</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Product Card 2 -->
+                    <article class="product-card">
+                        <div class="product-card__image-container">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop" alt="Arduino Uno" class="product-card__image">
+                        </div>
+                        <div class="product-card__content">
+                            <span class="product-card__category product-card__category--electronics">Eletrônicos</span>
+                            <h3 class="product-card__name">Arduino Uno R3</h3>
+                            <div class="product-card__footer">
+                                <span class="product-card__date">Ontem</span>
+                                <span class="product-card__status product-card__status--active">Ativo</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Product Card 3 -->
+                    <article class="product-card">
+                        <div class="product-card__image-container">
+                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop" alt="Livro de Mecânica" class="product-card__image">
+                        </div>
+                        <div class="product-card__content">
+                            <span class="product-card__category product-card__category--study-materials">Materiais de Estudo</span>
+                            <h3 class="product-card__name">Mecânica dos Fluidos - 3ª Edição</h3>
+                            <div class="product-card__footer">
+                                <span class="product-card__date">3 dias</span>
+                                <span class="product-card__status product-card__status--active">Ativo</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- CTA Card -->
+            <section class="cta-card">
+                <div class="cta-card__icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </div>
+                <div class="cta-card__content">
+                    <h3 class="cta-card__title">Tem mais para trocar?</h3>
+                    <p class="cta-card__description">
+                        Listar seus equipamentos antigos ajuda outros estudantes a encontrar ferramentas acessíveis para seus cursos e lhe rende pontos da comunidade para recompensas exclusivas do SENAI.
+                    </p>
+                    <a href="#" class="cta-card__link">
+                        Consulte nossas Diretrizes de Listagem
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <!-- Grid do footer -->
+            <div class="footer__grid">
+
+                <!-- Coluna da marca -->
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        SENAI <span>Exchange</span>
+                    </div>
+                    <p class="footer__tagline">
+                        Empoderando a próxima geração de profissionais da indústria através do compartilhamento
+                        colaborativo de equipamentos e comércio sustentável entre estudantes.
+                    </p>
+                    <!-- Ícones sociais -->
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-icon">
+                            <svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="footer__social-icon">
+                            <svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna Marketplace -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Mercado</h4>
+                    <a href="#" class="footer__column-link">Ver Todos</a>
+                    <a href="#" class="footer__column-link">Como Funciona</a>
+                    <a href="#" class="footer__column-link">Dicas de Segurança</a>
+                    <a href="#" class="footer__column-link">Casos de Sucesso</a>
+                </div>
+
+                <!-- Coluna Community -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Comunidade</h4>
+                    <a href="#" class="footer__column-link">Central do Aluno</a>
+                    <a href="#" class="footer__column-link">Ganhar Pontos</a>
+                    <a href="#" class="footer__column-link">Regras</a>
+                    <a href="#" class="footer__column-link">Embaixadores</a>
+                </div>
+
+                <!-- Coluna Support -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Suporte</h4>
+                    <a href="#" class="footer__column-link">Central de Ajuda</a>
+                    <a href="#" class="footer__column-link">Reportar Problema</a>
+                    <a href="#" class="footer__column-link">Perguntas Frequentes</a>
+                    <a href="#" class="footer__column-link">Contato</a>
+                </div>
+
+                <!-- Coluna Legal -->
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Legal</h4>
+                    <a href="#" class="footer__column-link">Política de Privacidade</a>
+                    <a href="#" class="footer__column-link">Termos de Uso</a>
+                    <a href="#" class="footer__column-link">Política de Cookies</a>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer__copyright">
+                <span>© 2024 SENAI Exchange. Todos os direitos reservados.</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

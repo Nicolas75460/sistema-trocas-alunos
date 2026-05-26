@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - SENAI Exchange</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/cadastro.css">
+</head>
+<body class="auth-body">
+    <!-- ============================================
+         HEADER / NAVEGAÇÃO PRINCIPAL
+         ============================================ -->
+    <header class="header">
+        <!-- Logo do sistema -->
+        <a href="explorar.html" class="header__logo">
+            <img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" class="header__logo-img">
+        </a>
+
+        <!-- Navegação Principal -->
+        <nav class="header__nav">
+            <a href="explorar.html" class="header__nav-link">Explorar</a>
+            <a href="meus-pedidos.html" class="header__nav-link">Trocas</a>
+            <a href="chat.html" class="header__nav-link">Mensagens</a>
+            <a href="novo-anuncio.html" class="header__nav-link">Novo Anuncio</a>
+        </nav>
+
+        <!-- Ações do Header -->
+        <div class="header__actions">
+            <div class="header__search">
+                <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" placeholder="Buscar..."/>
+            </div>
+            <a href="login.html" class="auth-header-link">Entrar</a>
+            <a href="cadastro.html" class="auth-header-link">Criar Conta</a>
+        </div>
+    </header>
+
+
+    <main class="auth-container">
+        <!-- Card de Login -->
+        <div class="auth-card">
+            <h1 class="auth-title">Bem-vindo de volta</h1>
+            <p class="auth-subtitle">Entre com sua conta para continuar trocando na plataforma SENAI.</p>
+
+            <form class="auth-form" action="explorar.html">
+                <div class="form-group">
+                    <label for="email" class="form-label">E-MAIL INSTITUCIONAL</label>
+                    <div class="input-wrapper">
+                        <svg class="icon icon--sm input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <input type="email" id="email" class="form-input" placeholder="nome@aluno.senai.br" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-label-row">
+                        <label for="senha" class="form-label">SENHA</label>
+                        <a href="#" class="forgot-link">Esqueceu a senha?</a>
+                    </div>
+                    <div class="input-wrapper">
+                        <svg class="icon icon--sm input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <input type="password" id="senha" class="form-input" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--primary auth-submit-btn">
+                    Entrar
+                    <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </button>
+            </form>
+
+            <p class="auth-switch">Ainda não tem conta? <a href="cadastro.html">Criar agora</a></p>
+        </div>
+
+        <!-- Prova Social -->
+        <div class="auth-social-proof">
+            <div class="avatar-group">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=face" alt="User" class="avatar-sm">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="User" class="avatar-sm">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=face" alt="User" class="avatar-sm">
+                <div class="avatar-sm avatar-more">+500</div>
+            </div>
+            <span class="social-text">Mais de 500 alunos já estão trocando hoje.</span>
+        </div>
+    </main>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__logo"><img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" style="height:24px;"/></div>
+                    <p class="footer__tagline">Empoderando a próxima geração de profissionais da indústria através do compartilhamento colaborativo de equipamentos.</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-icon">
+                            <svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        </a>
+                        <a href="#" class="footer__social-icon">
+                            <svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Mercado</h4>
+                    <a href="#" class="footer__column-link">Ver Todos</a>
+                    <a href="#" class="footer__column-link">Como Funciona</a>
+                    <a href="#" class="footer__column-link">Dicas de Segurança</a>
+                    <a href="#" class="footer__column-link">Casos de Sucesso</a>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Comunidade</h4>
+                    <a href="#" class="footer__column-link">Central do Aluno</a>
+                    <a href="#" class="footer__column-link">Ganhar Pontos</a>
+                    <a href="#" class="footer__column-link">Regras</a>
+                    <a href="#" class="footer__column-link">Embaixadores</a>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Suporte</h4>
+                    <a href="#" class="footer__column-link">Central de Ajuda</a>
+                    <a href="#" class="footer__column-link">Reportar Problema</a>
+                    <a href="#" class="footer__column-link">Perguntas Frequentes</a>
+                    <a href="#" class="footer__column-link">Contato</a>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Legal</h4>
+                    <a href="#" class="footer__column-link">Política de Privacidade</a>
+                    <a href="#" class="footer__column-link">Termos de Uso</a>
+                    <a href="#" class="footer__column-link">Política de Cookies</a>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <span>© 2024 SENAI Exchange. Todos os direitos reservados.</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

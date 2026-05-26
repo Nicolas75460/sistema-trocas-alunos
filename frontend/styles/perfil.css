@@ -1,0 +1,445 @@
+/* ============================================
+   SENAI Exchange - Tela de Perfil/Menu Inicial
+   Estilos específicos para a página de perfil do usuário
+   ============================================ */
+
+/* ============================================
+   LAYOUT PRINCIPAL
+   Container que divide a tela em sidebar e conteúdo
+   ============================================ */
+.perfil-container {
+    display: flex;
+    flex: 1;
+}
+
+/* ============================================
+   SIDEBAR DE CATEGORIAS
+   Menu lateral com filtros e navegação
+   ============================================ */
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    background-color: var(--cor-fundo-card);
+    border-right: 1px solid var(--cor-borda);
+    padding: var(--espacamento-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-lg);
+}
+
+/* Título da seção na sidebar */
+.sidebar__section-title {
+    font-size: var(--fonte-tamanho-xs);
+    font-weight: 600;
+    color: var(--cor-texto-secundario);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--espacamento-sm);
+}
+
+/* Lista de itens na sidebar */
+.sidebar__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-xs);
+}
+
+/* Item individual da sidebar */
+.sidebar__item {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-md);
+    padding: var(--espacamento-sm) var(--espacamento-md);
+    border-radius: var(--borda-raio-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: var(--fonte-tamanho-sm);
+    color: var(--cor-texto-secundario);
+}
+
+.sidebar__item:hover {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+/* Item ativo/selecionado */
+.sidebar__item--active {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-weight: 500;
+}
+
+/* Ícone do item */
+.sidebar__item-icon {
+    width: 20px;
+    height: 20px;
+    color: inherit;
+}
+
+/* ============================================
+   ÁREA DE CONTEÚDO PRINCIPAL
+   Onde aparece o perfil e as listagens
+   ============================================ */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--espacamento-xl);
+    overflow-y: auto;
+}
+
+/* ============================================
+   CARD DO PERFIL DO USUÁRIO
+   Informações principais do usuário
+   ============================================ */
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-xl);
+    padding: var(--espacamento-xl);
+    background-color: var(--cor-fundo-card);
+    border-radius: var(--borda-raio-lg);
+    border: 1px solid var(--cor-borda);
+    margin-bottom: var(--espacamento-xl);
+}
+
+/* Área do avatar com badge de verificado */
+.profile-card__avatar-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-card__avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--borda-raio-full);
+    object-fit: cover;
+}
+
+/* Badge de verificado no avatar */
+.profile-card__verified-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 28px;
+    height: 28px;
+    background-color: var(--cor-sucesso);
+    border-radius: var(--borda-raio-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--cor-fundo-card);
+}
+
+.profile-card__verified-badge svg {
+    width: 14px;
+    height: 14px;
+    color: var(--cor-texto-claro);
+}
+
+/* Informações do perfil */
+.profile-card__info {
+    flex: 1;
+}
+
+/* Header com nome e badge */
+.profile-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-md);
+    margin-bottom: var(--espacamento-sm);
+}
+
+.profile-card__name {
+    font-size: var(--fonte-tamanho-2xl);
+    font-weight: 700;
+    color: var(--cor-texto);
+}
+
+.profile-card__course-badge {
+    padding: var(--espacamento-xs) var(--espacamento-md);
+    background-color: rgba(14, 165, 233, 0.1);
+    color: var(--cor-secundaria);
+    font-size: var(--fonte-tamanho-xs);
+    font-weight: 600;
+    border-radius: var(--borda-raio-full);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Meta informações (rating, data de entrada) */
+.profile-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-lg);
+    margin-bottom: var(--espacamento-md);
+    font-size: var(--fonte-tamanho-sm);
+    color: var(--cor-texto-secundario);
+}
+
+/* Rating com estrela */
+.profile-card__rating {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-xs);
+}
+
+.profile-card__rating-star {
+    color: var(--cor-alerta);
+}
+
+.profile-card__rating-value {
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+/* Data de membro */
+.profile-card__member-since {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-xs);
+}
+
+/* ============================================
+   ESTATÍSTICAS DO PERFIL
+   Números de items, completados, etc.
+   ============================================ */
+.profile-card__stats {
+    display: flex;
+    gap: var(--espacamento-lg);
+}
+
+.profile-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--espacamento-md) var(--espacamento-lg);
+    background-color: var(--cor-fundo);
+    border-radius: var(--borda-raio-md);
+    min-width: 80px;
+}
+
+.profile-stat__value {
+    font-size: var(--fonte-tamanho-xl);
+    font-weight: 700;
+    color: var(--cor-texto);
+}
+
+.profile-stat__label {
+    font-size: var(--fonte-tamanho-xs);
+    color: var(--cor-texto-secundario);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   SEÇÃO DE LISTAGENS ATIVAS
+   Título e grid de produtos
+   ============================================ */
+.listings-section {
+    margin-bottom: var(--espacamento-xl);
+}
+
+.listings-section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--espacamento-lg);
+}
+
+.listings-section__title {
+    font-size: var(--fonte-tamanho-xl);
+    font-weight: 700;
+    color: var(--cor-texto);
+}
+
+.listings-section__view-all {
+    font-size: var(--fonte-tamanho-sm);
+    font-weight: 500;
+    color: var(--cor-secundaria);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.listings-section__view-all:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   GRID DE PRODUTOS
+   Layout responsivo para os cards de produtos
+   ============================================ */
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacamento-lg);
+}
+
+/* ============================================
+   CARD DE PRODUTO
+   Card individual de cada item listado
+   ============================================ */
+.product-card {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--borda-raio-lg);
+    overflow: hidden;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    box-shadow: var(--sombra-media);
+    transform: translateY(-2px);
+}
+
+/* Imagem do produto */
+.product-card__image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* Aspect ratio 4:3 */
+    background-color: var(--cor-fundo);
+    overflow: hidden;
+}
+
+.product-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Conteúdo do card */
+.product-card__content {
+    padding: var(--espacamento-md);
+}
+
+/* Categoria do produto */
+.product-card__category {
+    font-size: var(--fonte-tamanho-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--espacamento-xs);
+}
+
+/* Cores por categoria */
+.product-card__category--tools {
+    color: var(--cor-alerta);
+}
+
+.product-card__category--study-materials {
+    color: var(--cor-secundaria);
+}
+
+.product-card__category--uniforms {
+    color: #8b5cf6; /* Roxo para uniformes */
+}
+
+.product-card__category--electronics {
+    color: var(--cor-sucesso);
+}
+
+/* Nome do produto */
+.product-card__name {
+    font-size: var(--fonte-tamanho-base);
+    font-weight: 600;
+    color: var(--cor-texto);
+    margin-bottom: var(--espacamento-sm);
+}
+
+/* Footer do card com data e status */
+.product-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-card__date {
+    font-size: var(--fonte-tamanho-xs);
+    color: var(--cor-texto-secundario);
+}
+
+/* Badge de status */
+.product-card__status {
+    padding: var(--espacamento-xs) var(--espacamento-sm);
+    font-size: var(--fonte-tamanho-xs);
+    font-weight: 500;
+    border-radius: var(--borda-raio-sm);
+    border: 1px solid var(--cor-borda);
+    color: var(--cor-texto-secundario);
+}
+
+.product-card__status--active {
+    border-color: var(--cor-sucesso);
+    color: var(--cor-sucesso);
+}
+
+/* ============================================
+   CTA CARD (CALL TO ACTION)
+   Card para incentivar novas listagens
+   ============================================ */
+.cta-card {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-xl);
+    padding: var(--espacamento-xl);
+    background-color: var(--cor-fundo-card);
+    border: 2px dashed var(--cor-borda);
+    border-radius: var(--borda-raio-lg);
+    margin-bottom: var(--espacamento-xl);
+}
+
+/* Ícone do CTA */
+.cta-card__icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(14, 165, 233, 0.1);
+    border-radius: var(--borda-raio-full);
+    flex-shrink: 0;
+}
+
+.cta-card__icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--cor-secundaria);
+}
+
+/* Conteúdo do CTA */
+.cta-card__content {
+    flex: 1;
+}
+
+.cta-card__title {
+    font-size: var(--fonte-tamanho-lg);
+    font-weight: 700;
+    color: var(--cor-texto);
+    margin-bottom: var(--espacamento-sm);
+}
+
+.cta-card__description {
+    font-size: var(--fonte-tamanho-sm);
+    color: var(--cor-texto-secundario);
+    margin-bottom: var(--espacamento-md);
+    line-height: 1.6;
+}
+
+.cta-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espacamento-sm);
+    font-size: var(--fonte-tamanho-sm);
+    font-weight: 500;
+    color: var(--cor-secundaria);
+    text-decoration: none;
+}
+
+.cta-card__link:hover {
+    text-decoration: underline;
+}

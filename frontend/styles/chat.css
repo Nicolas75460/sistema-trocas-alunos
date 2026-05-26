@@ -1,0 +1,628 @@
+/* ============================================
+   SENAI Exchange - Tela de Chat/Conversa
+   Estilos específicos para a página de mensagens
+   ============================================ */
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ============================================
+   LAYOUT PRINCIPAL DO CHAT
+   Container que divide a tela em sidebar e área de conversa
+   ============================================ */
+.chat-container {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ============================================
+   SIDEBAR DE CONVERSAS
+   Lista de todas as conversas do usuário
+   ============================================ */
+.chat-sidebar {
+    width: 380px;
+    min-width: 380px;
+    background-color: var(--cor-fundo-card);
+    border-right: 1px solid var(--cor-borda);
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Permite que o container encolha abaixo do conteúdo */
+}
+
+/* Cabeçalho da sidebar (Estilo WhatsApp) */
+.chat-sidebar__header {
+    height: 60px;
+    padding: 0 var(--espacamento-md);
+    background-color: #f0f2f5;
+    border-bottom: 1px solid var(--cor-borda);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-sidebar__user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--borda-raio-full);
+    object-fit: cover;
+}
+
+.chat-sidebar__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-sm);
+}
+
+.chat-action-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #54656f;
+    background: transparent;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.chat-action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Lista de conversas */
+.chat-sidebar__list {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--espacamento-md);
+}
+
+/* ============================================
+   ITEM DE CONVERSA
+   Card individual de cada conversa na lista
+   ============================================ */
+.conversation-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--espacamento-md);
+    padding: var(--espacamento-md);
+    border-radius: var(--borda-raio-lg);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: var(--espacamento-sm);
+}
+
+.conversation-item:hover {
+    background-color: var(--cor-fundo);
+}
+
+/* Conversa ativa/selecionada */
+.conversation-item--active {
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+}
+
+/* Avatar do contato na conversa */
+.conversation-item__avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.conversation-item__avatar img {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--borda-raio-full);
+    object-fit: cover;
+}
+
+/* Indicador de online no avatar */
+.conversation-item__avatar .online-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--cor-sucesso);
+    border-radius: var(--borda-raio-full);
+    border: 2px solid var(--cor-fundo-card);
+}
+
+/* Avatar com iniciais (quando não há foto) */
+.conversation-item__avatar-initials {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--borda-raio-full);
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: var(--fonte-tamanho-base);
+}
+
+/* Conteúdo da conversa (nome, mensagem, tag) */
+.conversation-item__content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Linha superior com nome e data */
+.conversation-item__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--espacamento-xs);
+}
+
+.conversation-item__name {
+    font-weight: 600;
+    font-size: var(--fonte-tamanho-sm);
+    color: var(--cor-texto);
+}
+
+.conversation-item__time {
+    font-size: var(--fonte-tamanho-xs);
+    color: var(--cor-texto-secundario);
+    text-transform: uppercase;
+}
+
+/* Preview da última mensagem */
+.conversation-item__preview {
+    font-size: var(--fonte-tamanho-sm);
+    color: var(--cor-texto-secundario);
+    margin-bottom: var(--espacamento-sm);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Tag do item sendo negociado */
+.conversation-item__trade-tag {
+    display: inline-flex;
+    padding: var(--espacamento-xs) var(--espacamento-sm);
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    font-size: var(--fonte-tamanho-xs);
+    font-weight: 600;
+    border-radius: var(--borda-raio-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ÁREA PRINCIPAL DO CHAT
+   Onde as mensagens são exibidas
+   ============================================ */
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-fundo);
+    min-height: 0; /* Permite que o container encolha abaixo do conteúdo */
+}
+
+/* ============================================
+   HEADER DO CHAT (Estilo WhatsApp)
+   ============================================ */
+.chat-header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--espacamento-md);
+    background-color: #f0f2f5;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+/* Informações do contato */
+.chat-header__contact {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-md);
+}
+
+.chat-header__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--borda-raio-full);
+    object-fit: cover;
+}
+
+.chat-header__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header__name {
+    font-weight: 600;
+    font-size: var(--fonte-tamanho-base);
+    color: var(--cor-texto);
+}
+
+.chat-header__status {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-sm);
+    font-size: var(--fonte-tamanho-sm);
+}
+
+.chat-header__online {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-xs);
+    color: var(--cor-sucesso);
+}
+
+.chat-header__online::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: var(--cor-sucesso);
+    border-radius: var(--borda-raio-full);
+}
+
+/* Ações do Chat Header */
+.chat-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-sm);
+}
+
+/* Botão de finalizar troca */
+.chat-header__finalize-btn {
+    padding: var(--espacamento-xs) var(--espacamento-md);
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    font-weight: 600;
+    font-size: var(--fonte-tamanho-xs);
+    border: none;
+    border-radius: var(--borda-raio-sm);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-transform: uppercase;
+}
+
+.chat-header__finalize-btn:hover {
+    background-color: var(--cor-secundaria-hover);
+}
+
+/* ============================================
+   ÁREA DE MENSAGENS
+   Container scrollável com as mensagens
+   ============================================ */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--espacamento-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-md);
+}
+
+/* Separador de data */
+.chat-messages__date-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--espacamento-md) 0;
+}
+
+.chat-messages__date-separator span {
+    padding: var(--espacamento-xs) var(--espacamento-md);
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--borda-raio-full);
+    font-size: var(--fonte-tamanho-xs);
+    color: var(--cor-texto-secundario);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* ============================================
+   MENSAGEM INDIVIDUAL
+   Bolha de mensagem com avatar e horário
+   ============================================ */
+.message {
+    display: flex;
+    gap: var(--espacamento-sm);
+    max-width: 70%;
+}
+
+/* Mensagens recebidas (alinhadas à esquerda) */
+.message--received {
+    align-self: flex-start;
+}
+
+/* Mensagens enviadas (alinhadas à direita) */
+.message--sent {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+/* Avatar da mensagem */
+.message__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--borda-raio-full);
+    object-fit: cover;
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+/* Avatar com iniciais */
+.message__avatar-initials {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--borda-raio-full);
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: var(--fonte-tamanho-xs);
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+/* Conteúdo da mensagem */
+.message__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-xs);
+}
+
+/* Bolha da mensagem */
+.message__bubble {
+    padding: var(--espacamento-md);
+    border-radius: var(--borda-raio-lg);
+    font-size: var(--fonte-tamanho-sm);
+    line-height: 1.5;
+}
+
+/* Estilo da bolha recebida */
+.message--received .message__bubble {
+    background-color: var(--cor-fundo-card);
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+    border-bottom-left-radius: var(--borda-raio-sm);
+}
+
+/* Estilo da bolha enviada */
+.message--sent .message__bubble {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    border-bottom-right-radius: var(--borda-raio-sm);
+}
+
+/* Horário da mensagem */
+.message__time {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-xs);
+    font-size: var(--fonte-tamanho-xs);
+    color: var(--cor-texto-secundario);
+}
+
+.message--sent .message__time {
+    justify-content: flex-end;
+}
+
+/* Check de lido */
+.message__read-check {
+    color: var(--cor-secundaria);
+}
+
+/* ============================================
+   MENSAGEM COM IMAGEM
+   Mensagens que contêm fotos/imagens
+   ============================================ */
+.message__image-container {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--borda-raio-lg);
+    overflow: hidden;
+    max-width: 400px;
+}
+
+.message__image-text {
+    padding: var(--espacamento-md);
+    font-size: var(--fonte-tamanho-sm);
+    color: var(--cor-texto);
+}
+
+.message__image {
+    width: 100%;
+    display: block;
+}
+
+/* ============================================
+   SUGESTÃO DE TROCA
+   Card especial para propostas de troca
+   ============================================ */
+.trade-suggestion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacamento-sm);
+    padding: var(--espacamento-md) var(--espacamento-lg);
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--borda-raio-full);
+    font-size: var(--fonte-tamanho-sm);
+    font-weight: 500;
+    color: var(--cor-texto);
+    align-self: center;
+    margin: var(--espacamento-md) 0;
+}
+
+.trade-suggestion__icon {
+    width: 16px;
+    height: 16px;
+    color: var(--cor-erro);
+}
+
+.trade-suggestion__text {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: var(--fonte-tamanho-xs);
+}
+
+/* ============================================
+   INDICADOR DE DIGITANDO
+   Mostra quando o outro usuário está digitando
+   ============================================ */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-sm);
+    padding: var(--espacamento-sm);
+}
+
+.typing-indicator__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--borda-raio-full);
+    object-fit: cover;
+}
+
+.typing-indicator__dots {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: var(--espacamento-sm) var(--espacamento-md);
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--borda-raio-full);
+}
+
+.typing-indicator__dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--cor-texto-secundario);
+    border-radius: var(--borda-raio-full);
+    animation: typing-bounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator__dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator__dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator__dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing-bounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-4px);
+    }
+}
+
+/* ============================================
+   INPUT DE MENSAGEM
+   Campo para digitar e enviar mensagens
+   ============================================ */
+.chat-input {
+    padding: var(--espacamento-md) var(--espacamento-lg);
+    background-color: var(--cor-fundo-card);
+    border-top: 1px solid var(--cor-borda);
+}
+
+.chat-input__container {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-md);
+}
+
+/* Campo de texto */
+.chat-input__field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-md);
+    padding: var(--espacamento-md);
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--borda-raio-lg);
+}
+
+.chat-input__field input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: var(--fonte-tamanho-sm);
+    color: var(--cor-texto);
+}
+
+.chat-input__field input::placeholder {
+    color: var(--cor-texto-secundario);
+}
+
+/* Ícones de ação no input */
+.chat-input__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--espacamento-sm);
+}
+
+.chat-input__action-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    border-radius: var(--borda-raio-md);
+    transition: all 0.2s ease;
+}
+
+.chat-input__action-btn:hover {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+/* Botão de enviar */
+.chat-input__send-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    border: none;
+    border-radius: var(--borda-raio-full);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.chat-input__send-btn:hover {
+    background-color: var(--cor-secundaria-hover);
+}
+
+/* Aviso de segurança */
+.chat-input__safety-notice {
+    text-align: center;
+    padding-top: var(--espacamento-sm);
+    font-size: var(--fonte-tamanho-xs);
+    color: var(--cor-texto-secundario);
+}
+
+
