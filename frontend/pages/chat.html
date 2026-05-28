@@ -22,15 +22,15 @@
          ============================================ -->
     <header class="header">
         <!-- Logo do sistema -->
-        <a href="perfil.html" class="header__logo">
+        <a href="explorar.html" class="header__logo">
             <img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" class="header__logo-img">
         </a>
         
         <!-- Navegação Principal -->
         <nav class="header__nav">
-            <a href="perfil.html" class="header__nav-link">Explorar</a>
+            <a href="explorar.html" class="header__nav-link">Explorar</a>
             <a href="meus-pedidos.html" class="header__nav-link">Trocas</a>
-            <a href="chat.html" class="header__nav-link">Mensagens</a>
+            <a href="chat.html" class="header__nav-link header__nav-link--active" style="border-bottom: 2px solid var(--cor-primaria); padding-bottom: 8px;">Mensagens</a>
             <a href="novo-anuncio.html" class="header__nav-link">Novo Anuncio</a>
         </nav>
         
@@ -44,16 +44,12 @@
                 </svg>
                 <input type="text" placeholder="Buscar...">
             </div>
-            
-            <!-- Ícone de notificações -->
-            <button class="header__icon">
-                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-                </svg>
-            </button>
-            
+            <a href="login.html" class="auth-header-link">Entrar</a>
+            <a href="cadastro.html" class="auth-header-link">Criar Conta</a>
             <!-- Avatar do usuário -->
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Seu perfil" class="header__avatar">
+            <a href="perfil.html" class="header__avatar-link" style="display: flex;">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Seu perfil" class="header__avatar">
+            </a>
         </div>
     </header>
 
