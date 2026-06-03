@@ -1,83 +1,163 @@
 /**
- * Lógica para a tela de Perfil
- * Objetivo: Lidar com a edição de dados do usuário, mudança de foto de perfil e navegação em abas.
+ * perfil.js — Carrega e salva dados do perfil do aluno logado via API.
  */
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Lógica para Alternar Abas (ex: "Meus Itens", "Configurações")
-    const profileTabs = document.querySelectorAll('.profile-tab'); // Botões das abas
-    const profileContents = document.querySelectorAll('.profile-content'); // Conteúdo das abas
+document.addEventListener('DOMContentLoaded', async () => {
+
+    // ─── Verifica sessão ──────────────────────────────────────────────────
+    const aluno = getSessao();
+    if (!aluno) {
+        window.location.href = 'login.html';
+        return;
+    }
+
+    // ─── Popula dados do perfil na tela ───────────────────────────────────
+    const elNome    = document.querySelector('.profile-card__name');
+    const elCurso   = document.querySelector('.profile-card__course-badge');
+    const elAvatar  = document.querySelector('.profile-card__avatar');
+
+    if (elNome)   elNome.textContent  = aluno.nome  || 'Seu Nome';
+    if (elCurso)  elCurso.textContent = aluno.curso?.nome || 'Curso';
+
+    // ─── Popula a seção de listagens com os itens do aluno ───────────────
+    const listingsGrid = document.querySelector('.listings-grid');
+    if (listingsGrid) {
+        try {
+            const itens = await ItemAPI.listarPorAluno(aluno.id);
+            renderizarListings(itens, listingsGrid);
+
+            // Atualiza contador de itens
+            const statItens = document.querySelector('.profile-stat:first-child .profile-stat__value');
+            if (statItens) statItens.textContent = itens.length;
+        } catch (err) {
+            console.warn('Erro ao carregar itens do aluno:', err.message);
+        }
+    }
+
+    // ─── Renderiza cards de itens do aluno ────────────────────────────────
+    function renderizarListings(itens, grid) {
+        if (!itens || itens.length === 0) {
+            grid.innerHTML = '<p style="color:#888;padding:16px 0;">Você ainda não tem itens cadastrados.</p>';
+            return;
+        }
+        grid.innerHTML = '';
+        itens.forEach(item => {
+            const catNome = item.categoria?.nome || 'Item';
+            grid.innerHTML += `
+                <article class="product-card" data-item-id="${item.id}">
+                    <div class="product-card__image-container" style="background:linear-gradient(135deg,#1e3a5f,#0056b3); height:160px; display:flex; align-items:center; justify-content:center; border-radius:8px 8px 0 0;">
+                        <svg style="opacity:.25;width:48px;height:48px;color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"/>
+                        </svg>
+                    </div>
+                    <div class="product-card__content" style="padding:12px;">
+                        <span class="product-card__category product-card__category--tools">${catNome}</span>
+                        <h3 class="product-card__name" style="margin:6px 0 4px;">${item.nome}</h3>
+                        ${item.descricao ? `<p style="font-size:12px;color:#666;margin:0 0 10px;">${item.descricao.substring(0,60)}...</p>` : ''}
+                        <button class="btn btn--danger btn-excluir-item" data-item-id="${item.id}"
+                            style="font-size:12px;padding:6px 10px;background:#ef4444;color:white;border:none;border-radius:6px;cursor:pointer;">
+                            Excluir Item
+                        </button>
+                    </div>
+                </article>`;
+        });
+
+        // Ação de excluir item
+        document.querySelectorAll('.btn-excluir-item').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                if (!confirm('Tem certeza que deseja excluir este item?')) return;
+                const itemId = btn.dataset.itemId;
+                try {
+                    await ItemAPI.excluir(itemId);
+                    btn.closest('article').remove();
+                    alert('Item excluído com sucesso.');
+                } catch (err) {
+                    alert(`Erro ao excluir item: ${err.message}`);
+                }
+            });
+        });
+    }
+
+    // ─── Alternar Abas (Meus Itens / Configurações) ───────────────────────
+    const profileTabs    = document.querySelectorAll('.profile-tab');
+    const profileContents = document.querySelectorAll('.profile-content');
 
     profileTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Remove a classe ativa de todas as abas
             profileTabs.forEach(t => t.classList.remove('active'));
-            // Adiciona a classe ativa apenas na aba clicada
             tab.classList.add('active');
-
-            // Se o seu HTML usar data-target para mostrar o conteúdo correto:
             const targetId = tab.getAttribute('data-target');
             if (targetId) {
-                profileContents.forEach(content => content.classList.remove('active'));
-                const targetContent = document.getElementById(targetId);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                }
+                profileContents.forEach(c => c.classList.remove('active'));
+                const target = document.getElementById(targetId);
+                if (target) target.classList.add('active');
             }
         });
     });
 
-    // 2. Lógica para Edição de Perfil
+    // ─── Edição de perfil ─────────────────────────────────────────────────
     const btnEditProfile = document.querySelector('.btn-edit-profile');
-    const profileInputs = document.querySelectorAll('.profile-form input');
+    const profileInputs  = document.querySelectorAll('.profile-form input');
 
     if (btnEditProfile) {
-        btnEditProfile.addEventListener('click', (e) => {
+        btnEditProfile.addEventListener('click', async (e) => {
             e.preventDefault();
-            
-            // Verifica se o formulário já está em modo de edição
             const isEditing = btnEditProfile.classList.contains('editing');
 
             if (isEditing) {
-                // Ação de SALVAR
-                btnEditProfile.innerHTML = 'Editar Perfil';
-                btnEditProfile.classList.remove('editing');
-                
-                // Desabilita os inputs novamente para modo leitura
-                profileInputs.forEach(input => input.setAttribute('readonly', true));
-                
-                alert('Dados do perfil atualizados com sucesso!');
-                // Num sistema real, aqui você enviaria os dados (fetch/axios) para o backend
-            } else {
-                // Ação de EDITAR
-                btnEditProfile.innerHTML = 'Salvar Alterações';
-                btnEditProfile.classList.add('editing');
-                
-                // Remove o readonly para permitir a digitação
-                profileInputs.forEach(input => input.removeAttribute('readonly'));
-                
-                // Dá o foco no primeiro input do formulário automaticamente
-                if (profileInputs.length > 0) {
-                    profileInputs[0].focus();
+                // SALVAR
+                const novoNome  = document.querySelector('#input-nome')?.value?.trim();
+                const novoEmail = document.querySelector('#input-email')?.value?.trim();
+
+                if (novoNome || novoEmail) {
+                    try {
+                        const dadosAtualizar = {
+                            nome:  novoNome  || aluno.nome,
+                            email: novoEmail || aluno.email,
+                            curso: aluno.curso
+                        };
+                        const alunoAtualizado = await AlunoAPI.atualizar(aluno.id, dadosAtualizar);
+                        salvarSessao(alunoAtualizado);
+                        if (elNome)  elNome.textContent  = alunoAtualizado.nome;
+                        alert('Perfil atualizado com sucesso!');
+                    } catch (err) {
+                        alert(`Erro ao atualizar perfil: ${err.message}`);
+                    }
                 }
+
+                btnEditProfile.textContent = 'Editar Perfil';
+                btnEditProfile.classList.remove('editing');
+                profileInputs.forEach(input => input.setAttribute('readonly', true));
+            } else {
+                // EDITAR
+                btnEditProfile.textContent = 'Salvar Alterações';
+                btnEditProfile.classList.add('editing');
+                profileInputs.forEach(input => input.removeAttribute('readonly'));
+                if (profileInputs.length > 0) profileInputs[0].focus();
             }
         });
     }
 
-    // 3. Simulação de troca de Foto do Avatar
-    // Assume que existe um <input type="file" id="avatar-upload"> escondido
+    // ─── Troca de foto do avatar ──────────────────────────────────────────
     const avatarInput = document.getElementById('avatar-upload');
-    const avatarImage = document.querySelector('.profile-avatar img');
+    const avatarImage = document.querySelector('.profile-card__avatar, .profile-avatar img');
 
     if (avatarInput && avatarImage) {
         avatarInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (file) {
-                // Cria uma URL temporária (blob) para mostrar a imagem selecionada pelo usuário
-                const imageURL = URL.createObjectURL(file);
-                avatarImage.src = imageURL;
+                avatarImage.src = URL.createObjectURL(file);
+            }
+        });
+    }
+
+    // ─── Botão Logout ──────────────────────────────────────────────────────
+    const btnLogout = document.querySelector('.btn-logout, #btn-logout');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (confirm('Deseja sair da sua conta?')) {
+                encerrarSessao();
             }
         });
     }
