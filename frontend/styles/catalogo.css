@@ -29,7 +29,6 @@
    ============================================ */
 .catalogo-layout {
     display: flex;
-    min-height: calc(100vh - 73px);
     align-items: flex-start;
 }
 

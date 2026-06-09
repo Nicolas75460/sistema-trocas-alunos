@@ -17,7 +17,6 @@ body {
     flex: 1;
     min-height: 0;
     overflow: hidden;
-    margin-top: 0;
 }
 
 /* ============================================
@@ -300,7 +299,10 @@ body {
 .chat-messages {
     flex: 1;
     overflow-y: auto;
-    padding: var(--espacamento-lg);
+    padding-top: 0; /* Remove top padding to eliminate space between header and messages */
+    padding-right: var(--espacamento-lg);
+    padding-bottom: var(--espacamento-lg);
+    padding-left: var(--espacamento-lg);
     display: flex;
     flex-direction: column;
     gap: var(--espacamento-md);

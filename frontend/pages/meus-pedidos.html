@@ -6,6 +6,7 @@
     <title>Meus Pedidos - Troca SENAI</title>
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/meus-pedidos.css">
+    <link rel="stylesheet" href="../styles/cadastro.css">
 </head>
 <body>
     <!-- ============================================
@@ -16,31 +17,26 @@
         <a href="explorar.html" class="header__logo">
             <img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" class="header__logo-img">
         </a>
-        
+
         <!-- Navegação Principal -->
         <nav class="header__nav">
             <a href="explorar.html" class="header__nav-link">Explorar</a>
-            <a href="meus-pedidos.html" class="header__nav-link header__nav-link--active" style="border-bottom: 2px solid var(--cor-primaria); padding-bottom: 8px;">Trocas</a>
+            <a href="meus-pedidos.html" class="header__nav-link">Trocas</a>
             <a href="chat.html" class="header__nav-link">Mensagens</a>
             <a href="novo-anuncio.html" class="header__nav-link">Novo Anuncio</a>
+            <a href="catalogo.html" class="header__nav-link">Catalogo</a>
+            <a href="perfil.html" class="header__nav-link">Meu Perfil</a>
+
         </nav>
-        
+
         <!-- Ações do Header -->
         <div class="header__actions">
-            <!-- Campo de busca -->
             <div class="header__search">
-                <!-- Ícone de lupa -->
-                <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                <input type="text" placeholder="Buscar...">
             </div>
             <a href="login.html" class="auth-header-link">Entrar</a>
             <a href="cadastro.html" class="auth-header-link">Criar Conta</a>
-            <!-- Avatar do usuário -->
-            <a href="perfil.html" class="header__avatar-link" style="display: flex;">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Seu perfil" class="header__avatar">
-            </a>
+        </div> <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+            alt="Seu perfil" class="header__avatar">
         </div>
     </header>
 
@@ -98,25 +94,15 @@
         </div>
     </main>
 
-    <!-- ============================================
-         FOOTER
-         Rodapé do site com links e informações
-         ============================================ -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer__container">
-            <!-- Grid do footer -->
             <div class="footer__grid">
-
-                <!-- Coluna da marca -->
                 <div class="footer__brand">
-                    <div class="footer__logo">
-                        SENAI <span>Exchange</span>
-                    </div>
-                    <p class="footer__tagline">
-                        Empoderando a próxima geração de profissionais da indústria através do compartilhamento
-                        colaborativo de equipamentos e comércio sustentável entre estudantes.
-                    </p>
-                    <!-- Ícones sociais -->
+                    <div class="footer__logo"><img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange"
+                            style="height:50px;" /></div>
+                    <p class="footer__tagline">Empoderando a próxima geração de profissionais da indústria através do
+                        compartilhamento colaborativo de equipamentos e comércio sustentável entre estudantes.</p>
                     <div class="footer__social">
                         <a href="#" class="footer__social-icon">
                             <svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24">
@@ -132,8 +118,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Coluna Marketplace -->
                 <div class="footer__column">
                     <h4 class="footer__column-title">Mercado</h4>
                     <a href="#" class="footer__column-link">Ver Todos</a>
@@ -141,8 +125,6 @@
                     <a href="#" class="footer__column-link">Dicas de Segurança</a>
                     <a href="#" class="footer__column-link">Casos de Sucesso</a>
                 </div>
-
-                <!-- Coluna Community -->
                 <div class="footer__column">
                     <h4 class="footer__column-title">Comunidade</h4>
                     <a href="#" class="footer__column-link">Central do Aluno</a>
@@ -150,8 +132,6 @@
                     <a href="#" class="footer__column-link">Regras</a>
                     <a href="#" class="footer__column-link">Embaixadores</a>
                 </div>
-
-                <!-- Coluna Support -->
                 <div class="footer__column">
                     <h4 class="footer__column-title">Suporte</h4>
                     <a href="#" class="footer__column-link">Central de Ajuda</a>
@@ -159,22 +139,19 @@
                     <a href="#" class="footer__column-link">Perguntas Frequentes</a>
                     <a href="#" class="footer__column-link">Contato</a>
                 </div>
-
-                <!-- Coluna Legal -->
                 <div class="footer__column">
                     <h4 class="footer__column-title">Legal</h4>
                     <a href="#" class="footer__column-link">Política de Privacidade</a>
                     <a href="#" class="footer__column-link">Termos de Uso</a>
                     <a href="#" class="footer__column-link">Política de Cookies</a>
                 </div>
-
             </div>
-
-            <!-- Copyright -->
             <div class="footer__copyright">
                 <span>© 2024 SENAI Exchange. Todos os direitos reservados.</span>
             </div>
         </div>
     </footer>
+    <script src="../scripts/api.js"></script>
+    <script src="../scripts/meus-pedidos.js"></script>
 </body>
 </html>

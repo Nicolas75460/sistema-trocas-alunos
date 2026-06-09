@@ -227,10 +227,14 @@
     font-weight: 600;
     color: var(--cor-texto);
     margin-bottom: 16px;
+    display: block; /* Garante que o título fique na própria linha */
 }
 
 /* Área de drag & drop */
 .upload-dropzone {
+    display: block; /* CORREÇÃO: Força o label a se comportar como uma caixa (div) */
+    width: 100%; /* CORREÇÃO: Garante que não vaze ou encolha */
+    box-sizing: border-box; /* Garante que o padding fique dentro da largura */
     border: 2px dashed var(--cor-borda);
     border-radius: 12px;
     padding: 40px;
@@ -279,6 +283,7 @@
     display: flex;
     gap: 12px;
     margin-top: 16px;
+    flex-wrap: wrap; /* ADIÇÃO: Faz as fotos descerem de linha se passarem da largura máxima */
 }
 
 .thumbnail-slot {

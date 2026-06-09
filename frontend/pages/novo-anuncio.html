@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Anúncio - Troca SENAI</title>
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/novo-anuncio.css">
+    <link rel="stylesheet" href="../styles/cadastro.css">
 </head>
+
 <body>
-   <!-- ============================================
+    <!-- ============================================
          HEADER / NAVEGAÇÃO PRINCIPAL
          ============================================ -->
     <header class="header">
@@ -16,31 +19,26 @@
         <a href="explorar.html" class="header__logo">
             <img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange" class="header__logo-img">
         </a>
-        
+
         <!-- Navegação Principal -->
         <nav class="header__nav">
             <a href="explorar.html" class="header__nav-link">Explorar</a>
             <a href="meus-pedidos.html" class="header__nav-link">Trocas</a>
             <a href="chat.html" class="header__nav-link">Mensagens</a>
-            <a href="novo-anuncio.html" class="header__nav-link header__nav-link--active" style="border-bottom: 2px solid var(--cor-primaria); padding-bottom: 8px;">Novo Anuncio</a>
+            <a href="novo-anuncio.html" class="header__nav-link">Novo Anuncio</a>
+            <a href="catalogo.html" class="header__nav-link">Catalogo</a>
+            <a href="perfil.html" class="header__nav-link">Meu Perfil</a>
+
         </nav>
-        
+
         <!-- Ações do Header -->
         <div class="header__actions">
-            <!-- Campo de busca -->
             <div class="header__search">
-                <!-- Ícone de lupa -->
-                <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                <input type="text" placeholder="Buscar...">
             </div>
             <a href="login.html" class="auth-header-link">Entrar</a>
             <a href="cadastro.html" class="auth-header-link">Criar Conta</a>
-            <!-- Avatar do usuário -->
-            <a href="perfil.html" class="header__avatar-link" style="display: flex;">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Seu perfil" class="header__avatar">
-            </a>
+        </div> <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+            alt="Seu perfil" class="header__avatar">
         </div>
     </header>
     <!-- Main Content -->
@@ -48,7 +46,8 @@
         <div class="form-column">
             <div class="page-header">
                 <h1>Novo Anúncio</h1>
-                <p>Transforme o que você não usa mais em novas oportunidades. Preencha os detalhes abaixo para começar sua troca.</p>
+                <p>Transforme o que você não usa mais em novas oportunidades. Preencha os detalhes abaixo para começar
+                    sua troca.</p>
             </div>
 
             <div class="form-card">
@@ -56,7 +55,9 @@
                 <div class="type-selector">
                     <button class="type-option selected">
                         <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                                 <line x1="3" y1="6" x2="21" y2="6"></line>
                                 <path d="M16 10a4 4 0 0 1-8 0"></path>
@@ -66,8 +67,12 @@
                     </button>
                     <button class="type-option">
                         <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                                </path>
                             </svg>
                         </span>
                         <span>Serviço</span>
@@ -91,7 +96,9 @@
                             <option value="outros">Outros</option>
                         </select>
                         <span class="select-hint">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="12" y1="16" x2="12" y2="12"></line>
                                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -103,15 +110,20 @@
 
                 <div class="form-group">
                     <label for="description">Descrição</label>
-                    <textarea id="description" placeholder="Descreva o estado do item, tempo de uso e o que você aceita em troca..."></textarea>
+                    <textarea id="description"
+                        placeholder="Descreva o estado do item, tempo de uso e o que você aceita em troca..."></textarea>
                 </div>
             </div>
 
+            <!-- Substitua a div .photo-upload-section atual por esta: -->
             <div class="form-card photo-upload-section">
                 <h3>Fotos do Item</h3>
-                <div class="upload-dropzone">
+
+                <!-- Transformei a dropzone em um label e adicionei o input type="file" escondido -->
+                <label for="upload-fotos" class="upload-dropzone" style="cursor: pointer;">
                     <div class="upload-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                             <circle cx="8.5" cy="8.5" r="1.5"></circle>
                             <polyline points="21 15 16 10 5 21"></polyline>
@@ -119,33 +131,27 @@
                             <path d="M10 10h4"></path>
                         </svg>
                     </div>
-                    <p>Clique ou arraste fotos aqui</p>
+                    <p>Clique para adicionar fotos</p>
                     <span>PNG, JPG ou WEBP (Max. 5MB por foto)</span>
-                </div>
-                <div class="photo-thumbnails">
-                    <div class="thumbnail-slot">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Input escondido -->
+                    <input type="file" id="upload-fotos" multiple accept="image/png, image/jpeg, image/webp"
+                        style="display: none;">
+                </label>
+
+                <!-- Adicionei o id="preview-container" aqui -->
+                <div class="photo-thumbnails" id="preview-container">
+                    <!-- Os slots originais podem ficar como placeholders vazios, o JS vai limpá-los e adicionar as fotos -->
+                    <div class="thumbnail-slot empty-slot">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                             <circle cx="8.5" cy="8.5" r="1.5"></circle>
                             <polyline points="21 15 16 10 5 21"></polyline>
                         </svg>
                     </div>
-                    <div class="thumbnail-slot">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
-                        </svg>
-                    </div>
-                    <div class="thumbnail-slot">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
-                        </svg>
-                    </div>
-                    <div class="thumbnail-slot">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="thumbnail-slot empty-slot">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                             <circle cx="8.5" cy="8.5" r="1.5"></circle>
                             <polyline points="21 15 16 10 5 21"></polyline>
@@ -154,10 +160,12 @@
                 </div>
             </div>
 
+
             <div class="form-actions">
                 <button class="btn-publish">
                     Publicar Anúncio
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="22" y1="2" x2="11" y2="13"></line>
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
@@ -169,7 +177,8 @@
             <div class="tips-card">
                 <div class="tips-header">
                     <div class="tips-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <line x1="12" y1="16" x2="12" y2="12"></line>
                             <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -179,21 +188,24 @@
                 </div>
                 <ul class="tips-list">
                     <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
                         Use fotos nítidas e com boa iluminação.
                     </li>
                     <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
                         Seja específico sobre o estado de conservação.
                     </li>
                     <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
@@ -203,10 +215,12 @@
             </div>
             <div class="community-card">
                 <h4>Comunidade SENAI</h4>
-                <p>Lembre-se que as trocas ocorrem dentro do ambiente escolar. Combine a entrega em locais seguros e públicos dentro do campus.</p>
+                <p>Lembre-se que as trocas ocorrem dentro do ambiente escolar. Combine a entrega em locais seguros e
+                    públicos dentro do campus.</p>
             </div>
             <div class="promo-card">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tela%20de%20Novo%20Anuncio-uEpHKHs9nEg2DdmkZO03s7pUGZAam6.jpg" alt="Estudantes SENAI">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tela%20de%20Novo%20Anuncio-uEpHKHs9nEg2DdmkZO03s7pUGZAam6.jpg"
+                    alt="Estudantes SENAI">
                 <div class="promo-overlay">
                     <div class="promo-tag">MANTENHA A REDE VIVA</div>
                     <div class="promo-quote">"A economia circular começa com um simples anúncio."</div>
@@ -215,25 +229,15 @@
         </aside>
     </main>
 
-    <!-- ============================================
-         FOOTER
-         Rodapé do site com links e informações
-         ============================================ -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer__container">
-            <!-- Grid do footer -->
             <div class="footer__grid">
-
-                <!-- Coluna da marca -->
                 <div class="footer__brand">
-                    <div class="footer__logo">
-                        SENAI <span>Exchange</span>
-                    </div>
-                    <p class="footer__tagline">
-                        Empoderando a próxima geração de profissionais da indústria através do compartilhamento
-                        colaborativo de equipamentos e comércio sustentável entre estudantes.
-                    </p>
-                    <!-- Ícones sociais -->
+                    <div class="footer__logo"><img src="../assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange"
+                            style="height:50px;" /></div>
+                    <p> class="footer__tagline">Empoderando a próxima geração de profissionais da indústria através do
+                        compartilhamento colaborativo de equipamentos e comércio sustentável entre estudantes.</p>
                     <div class="footer__social">
                         <a href="#" class="footer__social-icon">
                             <svg class="icon icon--sm" fill="currentColor" viewBox="0 0 24 24">
@@ -249,8 +253,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Coluna Marketplace -->
                 <div class="footer__column">
                     <h4 class="footer__column-title">Mercado</h4>
                     <a href="#" class="footer__column-link">Ver Todos</a>
@@ -258,8 +260,6 @@
                     <a href="#" class="footer__column-link">Dicas de Segurança</a>
                     <a href="#" class="footer__column-link">Casos de Sucesso</a>
                 </div>
-
-                <!-- Coluna Community -->
                 <div class="footer__column">
                     <h4 class="footer__column-title">Comunidade</h4>
                     <a href="#" class="footer__column-link">Central do Aluno</a>
@@ -267,8 +267,6 @@
                     <a href="#" class="footer__column-link">Regras</a>
                     <a href="#" class="footer__column-link">Embaixadores</a>
                 </div>
-
-                <!-- Coluna Support -->
                 <div class="footer__column">
                     <h4 class="footer__column-title">Suporte</h4>
                     <a href="#" class="footer__column-link">Central de Ajuda</a>
@@ -276,18 +274,13 @@
                     <a href="#" class="footer__column-link">Perguntas Frequentes</a>
                     <a href="#" class="footer__column-link">Contato</a>
                 </div>
-
-                <!-- Coluna Legal -->
                 <div class="footer__column">
                     <h4 class="footer__column-title">Legal</h4>
                     <a href="#" class="footer__column-link">Política de Privacidade</a>
                     <a href="#" class="footer__column-link">Termos de Uso</a>
                     <a href="#" class="footer__column-link">Política de Cookies</a>
                 </div>
-
             </div>
-
-            <!-- Copyright -->
             <div class="footer__copyright">
                 <span>© 2024 SENAI Exchange. Todos os direitos reservados.</span>
             </div>
@@ -302,5 +295,8 @@
             });
         });
     </script>
+    <script src="../scripts/api.js"></script>
+    <script src="../scripts/novo-anuncio.js"></script>
 </body>
+
 </html>
