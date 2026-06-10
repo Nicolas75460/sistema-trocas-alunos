@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ─── Carrega trocas do backend ────────────────────────────────────────
     try {
         const [recebidas, enviadas] = await Promise.all([
-            apiFetch(`http://localhost:8080/trocas/receptor?value=${aluno.id}`),
-            apiFetch(`http://localhost:8080/trocas/solicitante?value=${aluno.id}`)
+            apiFetch(`${API_BASE}/trocas/receptor?value=${aluno.id}`),
+            apiFetch(`${API_BASE}/trocas/solicitante?value=${aluno.id}`)
         ]);
         trocasRecebidas = recebidas || [];
         trocasEnviadas  = enviadas  || [];
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             btn.addEventListener('click', async () => {
                 if (!confirm('Aceitar esta troca?')) return;
                 try {
-                    await apiFetch(`http://localhost:8080/trocas/${btn.dataset.trocaId}/status?value=ACEITA`, { method: 'PUT' });
+                    await apiFetch(`${API_BASE}/trocas/${btn.dataset.trocaId}/status?value=ACEITA`, { method: 'PUT' });
                     btn.closest('.pedido-card').querySelector('.btn-aceitar').textContent = '✅ Aceita';
                     btn.closest('[style]').querySelectorAll('button').forEach(b => b.remove());
                     window.location.reload();
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             btn.addEventListener('click', async () => {
                 if (!confirm('Recusar esta troca?')) return;
                 try {
-                    await apiFetch(`http://localhost:8080/trocas/${btn.dataset.trocaId}/status?value=RECUSADA`, { method: 'PUT' });
+                    await apiFetch(`${API_BASE}/trocas/${btn.dataset.trocaId}/status?value=RECUSADA`, { method: 'PUT' });
                     window.location.reload();
                 } catch (err) {
                     alert(`Erro: ${err.message}`);
