@@ -3,7 +3,7 @@
  * Todas as páginas devem carregar este arquivo ANTES dos seus próprios scripts.
  */
 
-const API_BASE = 'http://localhost:8080';
+const API_BASE = 'http://localhost:8082';
 
 // ─── AUTH / SESSION ──────────────────────────────────────────────────────────
 /**

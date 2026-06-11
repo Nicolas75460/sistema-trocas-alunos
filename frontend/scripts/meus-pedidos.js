@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ─── Carrega trocas do backend ────────────────────────────────────────
     try {
         const [recebidas, enviadas] = await Promise.all([
-            apiFetch(`http://localhost:8080/trocas/receptor?value=${aluno.id}`),
-            apiFetch(`http://localhost:8080/trocas/solicitante?value=${aluno.id}`)
+            apiFetch(`http://localhost:8082/trocas/receptor?value=${aluno.id}`),
+            apiFetch(`http://localhost:8082/trocas/solicitante?value=${aluno.id}`)
         ]);
         trocasRecebidas = recebidas || [];
         trocasEnviadas  = enviadas  || [];

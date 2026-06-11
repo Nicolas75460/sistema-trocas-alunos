@@ -1,0 +1,78 @@
+@startuml Sistema de Troca de Itens
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Usuário" as usuario
+actor "Administrador" as admin
+
+' ==================== ITENS ====================
+rectangle "Itens" {
+  usecase "Publicar item" as UC_PublicarItem
+  usecase "Buscar itens" as UC_BuscarItens
+  usecase "Deletar postagem" as UC_DeletarPostagem
+  usecase "Filtrar resultados" as UC_FiltrarResultados
+}
+
+' ==================== CONTA ====================
+rectangle "Conta" {
+  usecase "Fazer login" as UC_FazerLogin
+  usecase "Criar conta" as UC_CriarConta
+  usecase "Validar credenciais" as UC_ValidarCredenciais
+  usecase "Recuperar senha" as UC_RecuperarSenha
+}
+
+' ==================== TROCAS ====================
+rectangle "Trocas" {
+  usecase "Propor troca" as UC_ProporTroca
+  usecase "Aceitar troca" as UC_AceitarTroca
+  usecase "Recusar troca" as UC_RecusarTroca
+  usecase "Cancelar troca" as UC_CancelarTroca
+  usecase "Notificar usuário" as UC_NotificarUsuario
+}
+
+' ==================== COMUNICAÇÃO ====================
+rectangle "Comunicação" {
+  usecase "Trocar mensagens" as UC_TrocarMensagens
+  usecase "Avaliar usuário" as UC_AvaliarUsuario
+  usecase "Denunciar usuário" as UC_DenunciarUsuario
+}
+
+' ==================== ADMINISTRAÇÃO ====================
+rectangle "Administração" {
+  usecase "Ver relatórios" as UC_VerRelatorios
+  usecase "Moderar postagens" as UC_ModerarPostagens
+  usecase "Gerenciar usuários" as UC_GerenciarUsuarios
+}
+
+' ==================== RELACIONAMENTOS - USUÁRIO ====================
+usuario -- UC_PublicarItem
+usuario -- UC_BuscarItens
+usuario -- UC_FazerLogin
+usuario -- UC_CriarConta
+usuario -- UC_ProporTroca
+usuario -- UC_AceitarTroca
+usuario -- UC_RecusarTroca
+usuario -- UC_CancelarTroca
+usuario -- UC_TrocarMensagens
+usuario -- UC_AvaliarUsuario
+usuario -- UC_DenunciarUsuario
+
+' ==================== RELACIONAMENTOS - ADMINISTRADOR ====================
+admin -- UC_VerRelatorios
+admin -- UC_ModerarPostagens
+admin -- UC_GerenciarUsuarios
+
+' ==================== INCLUDE / EXTEND ====================
+UC_PublicarItem ..> UC_DeletarPostagem : <<include>>
+UC_BuscarItens ..> UC_FiltrarResultados : <<extend>>
+
+UC_FazerLogin ..> UC_ValidarCredenciais : <<include>>
+UC_FazerLogin ..> UC_RecuperarSenha : <<extend>>
+
+UC_AceitarTroca ..> UC_NotificarUsuario : <<extend>>
+UC_RecusarTroca ..> UC_NotificarUsuario : <<extend>>
+UC_CancelarTroca ..> UC_NotificarUsuario : <<extend>>
+
+@enduml
