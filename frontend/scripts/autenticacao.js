@@ -47,7 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 })
                 .catch(() => {
-                    // fallback: mantém opções estáticas caso a API não esteja rodando
+                    // fallback com nomes seguros caso a API esteja fora do ar
+                    selectCurso.innerHTML = `
+                        <option value="" disabled selected>Selecione seu curso</option>
+                        <option value="1">Desenvolvimento de Sistemas</option>
+                        <option value="2">Eletrot\u00e9cnica</option>
+                        <option value="3">Mec\u00e2nica</option>
+                        <option value="4">Administra\u00e7\u00e3o</option>
+                    `;
                 });
         }
 

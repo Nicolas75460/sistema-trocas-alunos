@@ -79,63 +79,10 @@
                 </div>
             </div>
 
-            <!-- Lista de conversas -->
+            <!-- Lista de conversas (populada dinamicamente pelo chat.js) -->
             <div class="chat-sidebar__list">
-
-                <!-- Conversa 1: Beatriz Silva (Ativa) -->
-                <div class="conversation-item conversation-item--active">
-                    <!-- Avatar com indicador online -->
-                    <div class="conversation-item__avatar">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
-                            alt="Beatriz Silva">
-                        <span class="online-indicator"></span>
-                    </div>
-                    <!-- Conteúdo da conversa -->
-                    <div class="conversation-item__content">
-                        <div class="conversation-item__header">
-                            <span class="conversation-item__name">Beatriz Silva</span>
-                            <span class="conversation-item__time">Agora mesmo</span>
-                        </div>
-                        <p class="conversation-item__preview">O multímetro ainda está disponível para troca?</p>
-                        <span class="conversation-item__trade-tag">Troca: Multímetro</span>
-                    </div>
-                </div>
-
-                <!-- Conversa 2: Marcos Oliveira -->
-                <div class="conversation-item">
-                    <!-- Avatar com foto -->
-                    <div class="conversation-item__avatar">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
-                            alt="Marcos Oliveira">
-                    </div>
-                    <!-- Conteúdo da conversa -->
-                    <div class="conversation-item__content">
-                        <div class="conversation-item__header">
-                            <span class="conversation-item__name">Marcos Oliveira</span>
-                            <span class="conversation-item__time">2h atrás</span>
-                        </div>
-                        <p class="conversation-item__preview">Compartilhou uma foto</p>
-                        <span class="conversation-item__trade-tag">Troca: Kit Arduino</span>
-                    </div>
-                </div>
-
-                <!-- Conversa 3: Ricardo Costa (sem foto, usa iniciais) -->
-                <div class="conversation-item">
-                    <!-- Avatar com iniciais -->
-                    <div class="conversation-item__avatar">
-                        <div class="conversation-item__avatar-initials">RC</div>
-                    </div>
-                    <!-- Conteúdo da conversa -->
-                    <div class="conversation-item__content">
-                        <div class="conversation-item__header">
-                            <span class="conversation-item__name">Ricardo Costa</span>
-                            <span class="conversation-item__time">Ontem</span>
-                        </div>
-                        <p class="conversation-item__preview">Obrigado pelo livro! Está em ótimo estado...</p>
-                        <span class="conversation-item__trade-tag">Troca: Mecânica Vol 1</span>
-                    </div>
-                </div>
-
+                <!-- Carregando conversas... -->
+                <p style="padding:16px;color:#9ca3af;font-size:13px;text-align:center;">Carregando...</p>
             </div>
         </aside>
 
@@ -175,80 +122,9 @@
             </header>
 
             <!-- ============================================
-                 ÁREA DE MENSAGENS
-                 Container scrollável com as mensagens
-                 ============================================ -->
+            <!-- Área de mensagens (populada dinamicamente pelo chat.js) -->
             <div class="chat-messages">
-
-                <!-- Separador de data -->
-                <div class="chat-messages__date-separator">
-                    <span>Hoje</span>
-                </div>
-
-                <!-- Mensagem recebida 1 -->
-                <div class="message message--received">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
-                        alt="Beatriz Silva" class="message__avatar">
-                    <div class="message__content">
-                        <div class="message__bubble">
-                            Olá! Vi sua postagem sobre o Multímetro na categoria Eletrônicos. Ainda está disponível para
-                            troca?
-                        </div>
-                        <div class="message__time">10:42</div>
-                    </div>
-                </div>
-
-                <!-- Mensagem enviada 1 -->
-                <div class="message message--sent">
-                    <div class="message__avatar-initials">EU</div>
-                    <div class="message__content">
-                        <div class="message__bubble">
-                            Ei Beatriz! Sim, está. Estou procurando alguns livros-texto específicos de hidráulica ou
-                            talvez uma estação de soldagem. Você tem algo assim?
-                        </div>
-                        <div class="message__time">
-                            10:45
-                            <span class="message__read-check">✓✓</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mensagem recebida 2 (com imagem) -->
-                <div class="message message--received">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
-                        alt="Beatriz Silva" class="message__avatar">
-                    <div class="message__content">
-                        <div class="message__image-container">
-                            <p class="message__image-text">Na verdade, eu tenho esta Estação de Soldagem Weller que não
-                                estou mais usando. Está quase nova!</p>
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tela%20de%20Chat%20Conversa-NX6M91zhBxPzU1R3kG1GQkkDY4fVv9.jpg"
-                                alt="Estação de Soldagem Weller" class="message__image"
-                                style="max-height: 200px; object-fit: cover;">
-                        </div>
-                        <div class="message__time">10:48</div>
-                    </div>
-                </div>
-
-                <!-- Sugestão de troca -->
-                <div class="trade-suggestion">
-                    <!-- Ícone de alerta/swap -->
-                    <svg class="trade-suggestion__icon" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                    </svg>
-                    <span class="trade-suggestion__text">Sugestão de Troca: Fluke 117 pela Estação Weller</span>
-                </div>
-
-                <!-- Indicador de digitando -->
-                <div class="typing-indicator">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
-                        alt="Beatriz Silva" class="typing-indicator__avatar">
-                    <div class="typing-indicator__dots">
-                        <span class="typing-indicator__dot"></span>
-                        <span class="typing-indicator__dot"></span>
-                        <span class="typing-indicator__dot"></span>
-                    </div>
-                </div>
-
+                <!-- Estado inicial exibido pelo chat.js -->
             </div>
 
             <!-- ============================================
