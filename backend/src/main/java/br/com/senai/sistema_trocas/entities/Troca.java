@@ -44,7 +44,7 @@ public class Troca {
     private Aluno receptor;
 
     @ManyToOne
-    @JoinColumn(name = "tb_item_id_item_ofertado", nullable = false)
+    @JoinColumn(name = "tb_item_id_item_ofertado", nullable = true)
     private Item itemOfertado;
 
     @ManyToOne
@@ -71,7 +71,7 @@ public class Troca {
     }
 
     public enum StatusTroca {
-        PENDENTE, ACEITA, RECUSADA
+        PENDENTE, ACEITA, RECUSADA, FINALIZADA
     }
 
     public Integer getId() {

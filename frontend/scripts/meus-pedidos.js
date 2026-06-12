@@ -97,15 +97,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         container.innerHTML = '';
         trocas.forEach(troca => {
             const statusClass = {
-                'PENDENTE' : 'warning',
-                'ACEITA'   : 'success',
-                'RECUSADA' : 'danger'
+                'PENDENTE'  : 'warning',
+                'ACEITA'    : 'success',
+                'RECUSADA'  : 'danger',
+                'FINALIZADA': 'info'
             }[troca.status] || 'warning';
 
             const statusLabel = {
-                'PENDENTE' : '⏳ Pendente',
-                'ACEITA'   : '✅ Aceita',
-                'RECUSADA' : '❌ Recusada'
+                'PENDENTE'  : '⏳ Pendente',
+                'ACEITA'    : '✅ Aceita',
+                'RECUSADA'  : '❌ Recusada',
+                'FINALIZADA': '🏁 Finalizada'
             }[troca.status] || troca.status;
 
             const nomeSolicitante = troca.solicitante?.nome || 'Aluno';
@@ -120,8 +122,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ? `<div style="display:flex;gap:8px;margin-top:12px;">
                        <button class="btn-aceitar btn btn--primary" data-troca-id="${troca.id}" style="font-size:13px;padding:8px 14px;">Aceitar</button>
                        <button class="btn-recusar btn" data-troca-id="${troca.id}" style="font-size:13px;padding:8px 14px;background:#ef4444;color:white;border:none;border-radius:6px;cursor:pointer;">Recusar</button>
+                       <a href="chat.html?trocaId=${troca.id}" class="btn" style="font-size:13px;padding:8px 14px;background:#e5e7eb;color:#374151;border:none;border-radius:6px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;">Conversar</a>
                    </div>`
-                : '';
+                : `<div style="display:flex;gap:8px;margin-top:12px;">
+                       <a href="chat.html?trocaId=${troca.id}" class="btn btn--primary" style="font-size:13px;padding:8px 14px;text-decoration:none;display:inline-flex;align-items:center;">Conversar no Chat</a>
+                   </div>`;
 
             container.innerHTML += `
                 <div class="pedido-card" data-troca-id="${troca.id}" style="background:white;border:1px solid #e5e7eb;border-radius:12px;padding:20px;margin-bottom:16px;">

@@ -33,15 +33,15 @@ public class TrocaService {
 
     public Troca findById(Integer id) {
         return trocaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Troca não encontrada com ID: " + id));
+                .orElseThrow(() -> new RuntimeException("Troca nao encontrada com ID: " + id));
     }
 
     public Troca insert(Troca troca) {
         if (troca.getSolicitante().getId().equals(troca.getReceptor().getId())) {
-            throw new RuntimeException("Solicitante e receptor não podem ser a mesma pessoa");
+            throw new RuntimeException("Solicitante e receptor nao podem ser a mesma pessoa");
         }
-        if (troca.getItemOfertado().getId().equals(troca.getItemDesejado().getId())) {
-            throw new RuntimeException("Item ofertado e item desejado não podem ser iguais");
+        if (troca.getItemOfertado() != null && troca.getItemOfertado().getId().equals(troca.getItemDesejado().getId())) {
+            throw new RuntimeException("Item ofertado e item desejado nao podem ser iguais");
         }
         troca.setDataCriacao(LocalDateTime.now());
         troca.setStatus(Troca.StatusTroca.PENDENTE);
@@ -52,11 +52,16 @@ public class TrocaService {
         Troca troca = findById(id);
         if (status == Troca.StatusTroca.ACEITA || status == Troca.StatusTroca.RECUSADA) {
             if (troca.getStatus() != Troca.StatusTroca.PENDENTE) {
-                throw new RuntimeException("Só é possível aceitar/recusar trocas pendentes");
+                throw new RuntimeException("So e possivel aceitar/recusar trocas pendentes");
+            }
+            troca.setStatus(status);
+        } else if (status == Troca.StatusTroca.FINALIZADA) {
+            if (troca.getStatus() != Troca.StatusTroca.PENDENTE && troca.getStatus() != Troca.StatusTroca.ACEITA) {
+                throw new RuntimeException("So e possivel finalizar trocas pendentes ou aceitas");
             }
             troca.setStatus(status);
         } else {
-            throw new RuntimeException("Status inválido");
+            throw new RuntimeException("Status invalido");
         }
         return trocaRepository.save(troca);
     }
@@ -64,7 +69,7 @@ public class TrocaService {
     public void delete(Integer id) {
         Troca troca = findById(id);
         if (troca.getStatus() != Troca.StatusTroca.PENDENTE) {
-            throw new RuntimeException("Só é possível deletar trocas pendentes");
+            throw new RuntimeException("So e possivel deletar trocas pendentes");
         }
         trocaRepository.deleteById(id);
     }

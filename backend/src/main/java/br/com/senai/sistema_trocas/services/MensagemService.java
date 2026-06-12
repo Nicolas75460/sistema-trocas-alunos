@@ -32,23 +32,24 @@ public class MensagemService {
 
     public Mensagem findById(Integer id) {
         return mensagemRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Mensagem não encontrada com ID: " + id));
+                .orElseThrow(() -> new RuntimeException("Mensagem nao encontrada com ID: " + id));
     }
 
     public Mensagem insert(Mensagem mensagem) {
         if (mensagem.getRemetente().getId().equals(mensagem.getDestinatario().getId())) {
-            throw new RuntimeException("Remetente e destinatário não podem ser a mesma pessoa");
+            throw new RuntimeException("Remetente e destinatario nao podem ser a mesma pessoa");
         }
+        mensagem.setDataEnvio(java.time.LocalDateTime.now());
         return mensagemRepository.save(mensagem);
     }
 
     public Mensagem update(Integer id, Mensagem mensagemAtualizada) {
         Mensagem mensagem = findById(id);
         if (!mensagem.getRemetente().getId().equals(mensagemAtualizada.getRemetente().getId())) {
-            throw new RuntimeException("Não é possível alterar o remetente");
+            throw new RuntimeException("Nao e possivel alterar o remetente");
         }
         if (!mensagem.getTroca().getId().equals(mensagemAtualizada.getTroca().getId())) {
-            throw new RuntimeException("Não é possível alterar a troca");
+            throw new RuntimeException("Nao e possivel alterar a troca");
         }
         mensagem.setMensagem(mensagemAtualizada.getMensagem());
         return mensagemRepository.save(mensagem);
@@ -56,7 +57,7 @@ public class MensagemService {
 
     public void delete(Integer id) {
         if (!mensagemRepository.existsById(id)) {
-            throw new RuntimeException("Mensagem não encontrada com ID: " + id);
+            throw new RuntimeException("Mensagem nao encontrada com ID: " + id);
         }
         mensagemRepository.deleteById(id);
     }

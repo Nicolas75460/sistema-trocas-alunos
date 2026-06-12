@@ -1,11 +1,11 @@
-/**
- * api.js — Módulo central de comunicação com o backend Spring Boot (porta 8080)
+﻿/**
+ * api.js â€” Módulo central de comunicação com o backend Spring Boot (porta 8080)
  * Todas as páginas devem carregar este arquivo ANTES dos seus próprios scripts.
  */
 
 const API_BASE = 'http://localhost:8080';
 
-// ─── AUTH / SESSION ──────────────────────────────────────────────────────────
+// â”€â”€â”€ AUTH / SESSION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Salva o aluno logado no sessionStorage.
  * @param {Object} aluno
@@ -41,7 +41,7 @@ function exigirLogin() {
     }
 }
 
-// ─── HELPER ──────────────────────────────────────────────────────────────────
+// â”€â”€â”€ HELPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Wrapper para fetch com tratamento padrão de erros.
  * @param {string} url
@@ -63,12 +63,12 @@ async function apiFetch(url, options = {}) {
         } catch (_) { /* ignora */ }
         throw new Error(mensagem);
     }
-    // 204 No Content → sem corpo
+    // 204 No Content â†’ sem corpo
     if (response.status === 204) return null;
     return response.json();
 }
 
-// ─── ALUNOS ──────────────────────────────────────────────────────────────────
+// â”€â”€â”€ ALUNOS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const AlunoAPI = {
     /**
      * Realiza login. Retorna objeto Aluno se credenciais corretas, senão lança erro.
@@ -101,7 +101,7 @@ const AlunoAPI = {
         apiFetch(`${API_BASE}/alunos/${id}`, { method: 'PUT', body: JSON.stringify(dados) }),
 };
 
-// ─── CURSOS ──────────────────────────────────────────────────────────────────
+// â”€â”€â”€ CURSOS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const CursoAPI = {
     /**
      * Retorna lista de todos os cursos.
@@ -110,7 +110,7 @@ const CursoAPI = {
         apiFetch(`${API_BASE}/cursos`),
 };
 
-// ─── CATEGORIAS ──────────────────────────────────────────────────────────────
+// â”€â”€â”€ CATEGORIAS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const CategoriaAPI = {
     /**
      * Retorna lista de todas as categorias.
@@ -119,7 +119,7 @@ const CategoriaAPI = {
         apiFetch(`${API_BASE}/categorias`),
 };
 
-// ─── ITENS ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ ITENS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ItemAPI = {
     /**
      * Lista todos os itens (usado em Explorar e Catálogo).
@@ -163,7 +163,7 @@ const ItemAPI = {
         apiFetch(`${API_BASE}/itens/${id}`, { method: 'DELETE' }),
 };
 
-// ─── TROCAS ──────────────────────────────────────────────────────────────────
+// â”€â”€â”€ TROCAS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const TrocaAPI = {
     /**
      * Lista todas as trocas.
@@ -194,7 +194,7 @@ const TrocaAPI = {
         apiFetch(`${API_BASE}/trocas/${id}`, { method: 'DELETE' }),
 };
 
-// ─── MENSAGENS ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ MENSAGENS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const MensagemAPI = {
     /**
      * Lista todas as mensagens.
@@ -216,3 +216,31 @@ const MensagemAPI = {
     enviar: (mensagem) =>
         apiFetch(`${API_BASE}/mensagens/cadastro`, { method: 'POST', body: JSON.stringify(mensagem) }),
 };
+
+// --- AUTO HIDE LOGIN ---
+document.addEventListener('DOMContentLoaded', () => {
+    const loginLink = document.querySelector('.auth-header-link[href="login.html"]');
+    const cadastroLink = document.querySelector('.auth-header-link[href="cadastro.html"]');
+    const headerActions = document.querySelector('.header__actions');
+    
+    if (getSessao()) {
+        if (loginLink) loginLink.style.display = 'none';
+        if (cadastroLink) cadastroLink.style.display = 'none';
+        
+        if (headerActions) {
+            const btnSair = document.createElement('a');
+            btnSair.href = '#';
+            btnSair.className = 'auth-header-link';
+            btnSair.textContent = 'Sair da Conta';
+            btnSair.style.backgroundColor = '#dc3545'; // um tom vermelho/deslogar
+            btnSair.style.color = 'white';
+            btnSair.style.border = 'none';
+            btnSair.addEventListener('click', (e) => {
+                e.preventDefault();
+                sessionStorage.removeItem('alunoLogado');
+                window.location.reload(); // Recarrega a página conforme solicitado
+            });
+            headerActions.appendChild(btnSair);
+        }
+    }
+});

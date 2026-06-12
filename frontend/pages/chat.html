@@ -44,8 +44,6 @@
             </div>
             <a href="login.html" class="auth-header-link">Entrar</a>
             <a href="cadastro.html" class="auth-header-link">Criar Conta</a>
-        </div> <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
-            alt="Seu perfil" class="header__avatar">
         </div>
     </header>
 
@@ -56,14 +54,14 @@
     <main class="chat-container">
 
         <!-- ============================================
-             SIDEBAR DE CONVERSAS
-             Lista de todas as conversas do usuário
-             ============================================ -->
+         SIDEBAR DE CONVERSAS
+         Lista de todas as conversas do usuário
+         ============================================ -->
         <aside class="chat-sidebar">
             <!-- Cabeçalho da sidebar (Estilo WhatsApp) -->
             <div class="chat-sidebar__header">
-                <!-- Avatar do usuário atual -->
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Seu perfil" class="chat-sidebar__user-avatar">
+                <!-- Avatar do usuário atual (gerado dinamicamente) -->
+                <div id="sidebar-user-avatar" class="chat-sidebar__user-avatar" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1e3a5f,#0056b3);color:white;font-weight:700;font-size:18px;border-radius:50%;width:40px;height:40px;">?</div>
                 
                 <!-- Ações -->
                 <div class="chat-sidebar__actions">
@@ -97,32 +95,25 @@
                  Informações do contato e item sendo negociado
                  ============================================ -->
             <header class="chat-header">
-                <!-- Informações do contato -->
+                <!-- Informações do contato (populadas pelo chat.js) -->
                 <div class="chat-header__contact">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face"
-                        alt="Beatriz Silva" class="chat-header__avatar">
+                    <!-- Avatar gerado dinamicamente via JS -->
+                    <img src="" alt="" class="chat-header__avatar" style="display:none;">
                     <div class="chat-header__info">
-                        <div class="chat-header__name">Beatriz Silva</div>
-                        <div class="chat-header__status">
-                            <span class="chat-header__online">Online</span>
-                        </div>
+                        <div class="chat-header__name">Selecione uma conversa</div>
+                        <div class="chat-header__status"></div>
                     </div>
                 </div>
 
-                <!-- Ações do chat (Estilo WhatsApp) -->
+                <!-- Ações do chat -->
                 <div class="chat-header__actions">
-                    <button class="chat-header__finalize-btn">Finalizar Troca</button>
-                    <button class="chat-action-btn" title="Buscar">
-                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                    </button>
-                    <button class="chat-action-btn" title="Menu">
-                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
-                    </button>
+                    <button class="chat-header__finalize-btn" disabled title="Selecione uma conversa">Finalizar Troca</button>
                 </div>
             </header>
 
             <!-- ============================================
-            <!-- Área de mensagens (populada dinamicamente pelo chat.js) -->
+                 Área de mensagens (populada dinamicamente pelo chat.js)
+                 ============================================ -->
             <div class="chat-messages">
                 <!-- Estado inicial exibido pelo chat.js -->
             </div>
@@ -144,7 +135,7 @@
                         </button>
 
                         <!-- Input de texto -->
-                        <input type="text" placeholder="Digite sua mensagem...">
+                        <input type="text" id="chat-message-input" placeholder="Selecione uma conversa para começar..." disabled>
 
                         <!-- Ações adicionais -->
                         <div class="chat-input__actions">

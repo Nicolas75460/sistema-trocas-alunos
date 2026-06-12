@@ -11,12 +11,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // ─── Popula dados do perfil na tela ───────────────────────────────────
-    const elNome    = document.querySelector('.profile-card__name');
-    const elCurso   = document.querySelector('.profile-card__course-badge');
-    const elAvatar  = document.querySelector('.profile-card__avatar');
+    const elNome        = document.querySelector('.profile-card__name');
+    const elCurso       = document.querySelector('.profile-card__course-badge');
+    const elAvatar      = document.querySelector('.profile-card__avatar');
+    const elTrocasLabel = document.querySelector('.profile-card__trocas-label');
 
     if (elNome)   elNome.textContent  = aluno.nome  || 'Seu Nome';
     if (elCurso)  elCurso.textContent = aluno.curso?.nome || 'Curso';
+    if (elAvatar) elAvatar.textContent = (aluno.nome || '?').charAt(0).toUpperCase();
 
     // ─── Popula a seção de listagens com os itens do aluno ───────────────
     const listingsGrid = document.querySelector('.listings-grid');
@@ -26,12 +28,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             renderizarListings(itens, listingsGrid);
 
             // Atualiza contador de itens
-            const statItens = document.querySelector('.profile-stat:first-child .profile-stat__value');
+            const statItens = document.getElementById('stat-itens');
             if (statItens) statItens.textContent = itens.length;
         } catch (err) {
             console.warn('Erro ao carregar itens do aluno:', err.message);
         }
     }
+
+    // ─── Carrega e atualiza contadores de trocas e reservas ────────────────
+    try {
+        const [recebidas, enviadas] = await Promise.all([
+            apiFetch(`${API_BASE}/trocas/receptor?value=${aluno.id}`),
+            apiFetch(`${API_BASE}/trocas/solicitante?value=${aluno.id}`)
+        ]);
+        const totalTrocas = (recebidas || []).length + (enviadas || []).length;
+        
+        const statTrocas = document.getElementById('stat-trocas');
+        if (statTrocas) statTrocas.textContent = totalTrocas;
+        if (elTrocasLabel) elTrocasLabel.textContent = `(${totalTrocas} trocas)`;
+    } catch (err) {
+        console.warn('Erro ao carregar trocas para contador:', err.message);
+    }
+
+    const statReservas = document.getElementById('stat-reservas');
+    if (statReservas) statReservas.textContent = 0; // Sem recurso de reserva ativo
 
     // ─── Renderiza cards de itens do aluno ────────────────────────────────
     function renderizarListings(itens, grid) {

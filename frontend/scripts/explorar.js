@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // ─── Solicitar Troca ─────────────────────────────────────────────────
+    // ─── Solicitar Troca ─────────────────────────────────────────────────────
     document.addEventListener('click', async (e) => {
         const btn = e.target.closest('.btn-request');
         if (!btn) return;
@@ -76,16 +76,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         const card = btn.closest('.item-card');
-        const itemId = card ? card.dataset.itemId : null;
-        const itemName = card ? card.querySelector('h3')?.innerText : 'este item';
+        const itemId    = card ? card.dataset.itemId    : null;
+        const donoId    = card ? card.dataset.alunoId   : null;
+        const itemName  = card ? card.querySelector('h3')?.innerText : 'este item';
 
-        if (!itemId) {
-            alert(`Troca solicitada para: ${itemName}\n(Selecione o item que deseja oferecer no chat.)`);
-            window.location.href = 'chat.html';
+        // Impede troca com próprio item
+        if (donoId && String(donoId) === String(aluno.id)) {
+            alert('⚠️ Este item é seu! Você não pode solicitar troca do próprio item.');
             return;
         }
 
-        // Navega para o catálogo/chat passando o ID do item desejado
+        if (!itemId) {
+            alert(`Troca solicitada para: ${itemName}\n(Item não possui ID, tente recarregar a página.)`);
+            return;
+        }
+
+        // Redireciona para o chat passando o ID do item desejado
         window.location.href = `chat.html?itemDesejado=${itemId}`;
     });
 
@@ -101,11 +107,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         grid.innerHTML = '';
         itens.forEach(item => {
-            const nomeAluno = item.aluno?.nome || 'Usuário';
+            const nomeAluno     = item.aluno?.nome || 'Usuário';
+            const alunoId       = item.aluno?.id   || '';
             const nomeCategoria = item.categoria?.nome || '';
-            const descricao = item.descricao || '';
+            const descricao     = item.descricao || '';
             grid.innerHTML += `
-                <div class="item-card" data-item-id="${item.id}">
+                <div class="item-card" data-item-id="${item.id}" data-aluno-id="${alunoId}">
                     <div class="item-image" style="background: linear-gradient(135deg,#1e3a5f 0%,#0056b3 100%); display:flex; align-items:center; justify-content:center; min-height:160px;">
                         <div class="item-tags">
                             ${nomeCategoria ? `<span class="tag tag--white">${nomeCategoria.toUpperCase()}</span>` : ''}

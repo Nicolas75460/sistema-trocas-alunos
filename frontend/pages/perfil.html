@@ -35,8 +35,7 @@
             </div>
             <a href="login.html" class="auth-header-link">Entrar</a>
             <a href="cadastro.html" class="auth-header-link">Criar Conta</a>
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
-                alt="Seu perfil" class="header__avatar">
+            
         </div>
     </header>
 
@@ -45,7 +44,7 @@
             <!-- Profile Card -->
             <section class="profile-card">
                 <div class="profile-card__avatar-container">
-                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQHuezd6qtecAQ/profile-displayphoto-crop_800_800/B4DZ0DJHyoKoAI-/0/1773874217907?e=1781136000&v=beta&t=-T_xIx94_-34WEdWUn7DDqesmgTBasU8LVETwtIU_IU" alt="Gabriel Santos" class="profile-card__avatar">
+                    <div class="profile-card__avatar" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1e3a5f,#0056b3);color:white;font-weight:700;font-size:36px;border-radius:50%;width:120px;height:120px;box-shadow:0 8px 30px rgba(0,0,0,0.12);">?</div>
                     <div class="profile-card__verified-badge">
                         <svg fill="currentColor" viewBox="0 0 24 24">
                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -54,8 +53,8 @@
                 </div>
                 <div class="profile-card__info">
                     <div class="profile-card__header">
-                        <h1 class="profile-card__name">Guilherme Aparecido</h1>
-                        <span class="profile-card__course-badge">Estudante de Desenvolvimento de Sistemas</span>
+                        <h1 class="profile-card__name">Seu Nome</h1>
+                        <span class="profile-card__course-badge">Curso</span>
                     </div>
                     <div class="profile-card__meta">
                         <div class="profile-card__rating">
@@ -63,20 +62,20 @@
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                             </svg>
                             <span class="profile-card__rating-value">4.9</span>
-                            <span>(24 trocas)</span>
+                            <span class="profile-card__trocas-label">(0 trocas)</span>
                         </div>
                     </div>
                     <div class="profile-card__stats">
                         <div class="profile-stat">
-                            <span class="profile-stat__value">23</span>
+                            <span class="profile-stat__value" id="stat-itens">0</span>
                             <span class="profile-stat__label">Itens</span>
                         </div>
                         <div class="profile-stat">
-                            <span class="profile-stat__value">47</span>
+                            <span class="profile-stat__value" id="stat-trocas">0</span>
                             <span class="profile-stat__label">Trocas</span>
                         </div>
                         <div class="profile-stat">
-                            <span class="profile-stat__value">5</span>
+                            <span class="profile-stat__value" id="stat-reservas">0</span>
                             <span class="profile-stat__label">Reservas</span>
                         </div>
                     </div>
@@ -90,48 +89,7 @@
                     <a href="#" class="listings-section__view-all">Ver tudo</a>
                 </div>
                 <div class="listings-grid">
-                    <!-- Product Card 1 -->
-                    <article class="product-card">
-                        <div class="product-card__image-container">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Multímetro Digital" class="product-card__image">
-                        </div>
-                        <div class="product-card__content">
-                            <span class="product-card__category product-card__category--tools">Ferramentas</span>
-                            <h3 class="product-card__name">Multímetro Digital Digital</h3>
-                            <div class="product-card__footer">
-                                <span class="product-card__date">Hoje</span>
-                                <span class="product-card__status product-card__status--active">Ativo</span>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Product Card 2 -->
-                    <article class="product-card">
-                        <div class="product-card__image-container">
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop" alt="Arduino Uno" class="product-card__image">
-                        </div>
-                        <div class="product-card__content">
-                            <span class="product-card__category product-card__category--electronics">Eletrônicos</span>
-                            <h3 class="product-card__name">Arduino Uno R3</h3>
-                            <div class="product-card__footer">
-                                <span class="product-card__date">Ontem</span>
-                                <span class="product-card__status product-card__status--active">Ativo</span>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- Product Card 3 -->
-                    <article class="product-card">
-                        <div class="product-card__image-container">
-                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop" alt="Livro de Mecânica" class="product-card__image">
-                        </div>
-                        <div class="product-card__content">
-                            <span class="product-card__category product-card__category--study-materials">Materiais de Estudo</span>
-                            <h3 class="product-card__name">Mecânica dos Fluidos - 3ª Edição</h3>
-                            <div class="product-card__footer">
-                                <span class="product-card__date">3 dias</span>
-                                <span class="product-card__status product-card__status--active">Ativo</span>
-                            </div>
-                        </div>
-                    </article>
+                    <!-- Itens carregados dinamicamente pelo perfil.js -->
                 </div>
             </section>
 
