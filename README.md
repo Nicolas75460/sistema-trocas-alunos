@@ -1,7 +1,7 @@
 # 🔄 SENAI Exchange — Sistema de Troca de Itens entre Alunos
 
 <p align="center">
-  <img src="./frontend/assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange Logo" width="220px">
+  <img src="./projeto/src/main/resources/static/assets/logo_senai_troca-sem-fundo.png" alt="SENAI Exchange Logo" width="220px">
 </p>
 
 <p align="center">
@@ -32,59 +32,90 @@ Com uma interface moderna e intuitiva, os alunos podem anunciar itens que não u
 - 🤝 **Solicitação de Trocas:** Fluxo de negociação onde o aluno solicitante pode propor a troca de um item por outro.
 - 💬 **Chat em Tempo Real:** Canal de comunicação integrado para cada proposta de troca, permitindo alinhar os detalhes e o ponto de encontro de forma segura.
 - 👤 **Perfil do Usuário:** Página de edição de perfil mostrando informações do aluno, curso atual, foto de perfil e seus itens ativos.
+- 🗃️ **Dados Iniciais Automáticos:** O sistema popula automaticamente cursos e categorias ao iniciar (`DataInitializer`), tornando o ambiente pronto para uso imediatamente.
 
 ---
 
 ## 🏗️ Arquitetura do Sistema
 
-O projeto é construído em uma arquitetura **Client-Server** desacoplada, utilizando um backend robusto em **Spring Boot** que fornece uma API REST para o cliente **Single/Multi-page HTML5** construído com Javascript Puro (Vanilla JS) e CSS3 customizado.
+O projeto é construído como uma aplicação **monolítica com Spring Boot**, onde o backend fornece a API REST **e também serve o frontend** (HTML5 / CSS3 / Vanilla JS) como recursos estáticos. Não há servidor de frontend separado.
 
 ```mermaid
 graph TD
-    A[Frontend: HTML5 / CSS3 / Vanilla JS] -->|Requisições HTTP REST / JSON| B[Backend: Spring Boot API]
-    B -->|JPA / Hibernate| C[(Database: PostgreSQL 15)]
-    B -.->|Segurança| D[BCrypt Password Hashing]
-    E[pgAdmin 4] -->|Gerenciamento| C
-    F[Docker Compose] -->|Orquestração| C
-    F -->|Orquestração| E
+    A[Navegador — HTML5 / CSS3 / Vanilla JS] -->|Requisições HTTP REST / JSON| B[Spring Boot — API REST + Servidor de Arquivos Estáticos]
+    B -->|JPA / Hibernate| C[(PostgreSQL 15)]
+    B -..->|Segurança| D[BCrypt Password Hashing]
+    B -..->|Seed de Dados| E[DataInitializer — Cursos & Categorias]
+    F[pgAdmin 4] -->|Gerenciamento| C
+    G[Docker Compose] -->|Orquestração| C
+    G -->|Orquestração| F
 ```
 
 ---
 
 ## 📂 Estrutura do Projeto
 
-Abaixo está a organização das pastas e arquivos principais do projeto:
-
 ```text
 sistema-trocas-alunos/
-├── backend/                       # Servidor Spring Boot (Java)
+├── projeto/                                      # Projeto Spring Boot (Maven)
 │   ├── src/main/java/br/com/senai/sistema_trocas/
-│   │   ├── config/                # Configurações de CORS e Segurança
-│   │   ├── controllers/           # Controladores REST da API
-│   │   ├── entities/              # Entidades de mapeamento JPA (Banco de Dados)
-│   │   ├── repositories/          # Interfaces de acesso ao banco (Spring Data JPA)
-│   │   └── services/              # Regras de negócio da aplicação
-│   ├── src/main/resources/
-│   │   └── application.properties # Parâmetros do banco de dados e servidor
-│   └── pom.xml                    # Gerenciador de dependências Maven
+│   │   ├── config/
+│   │   │   ├── CorsConfig.java                  # Configuração de CORS
+│   │   │   ├── SecurityConfig.java              # Configuração de Segurança
+│   │   │   └── DataInitializer.java             # Seed automático de cursos e categorias
+│   │   ├── controllers/                          # Controladores REST da API
+│   │   │   ├── AlunoController.java
+│   │   │   ├── CategoriaController.java
+│   │   │   ├── CursoController.java
+│   │   │   ├── ImagemItemController.java
+│   │   │   ├── ItemController.java
+│   │   │   ├── MensagemController.java
+│   │   │   └── TrocaController.java
+│   │   ├── entities/                             # Entidades JPA
+│   │   │   ├── Aluno.java
+│   │   │   ├── Categoria.java
+│   │   │   ├── Curso.java
+│   │   │   ├── ImagemItem.java
+│   │   │   ├── Item.java
+│   │   │   ├── Mensagem.java
+│   │   │   └── Troca.java
+│   │   ├── repositories/                         # Interfaces Spring Data JPA
+│   │   └── services/                             # Regras de negócio
+│   │
+│   └── src/main/resources/
+│       ├── application.properties                # Configurações do banco e servidor
+│       └── static/                               # Frontend servido pelo Spring Boot
+│           ├── index.html                        # Página principal (Explorar)
+│           ├── assets/                           # Logos e recursos visuais
+│           ├── pages/                            # Páginas HTML da aplicação
+│           │   ├── login.html
+│           │   ├── cadastro.html
+│           │   ├── catalogo.html
+│           │   ├── novo-anuncio.html
+│           │   ├── meus-pedidos.html
+│           │   ├── chat.html
+│           │   └── perfil.html
+│           ├── scripts/                          # Lógica JavaScript (comunicação com a API)
+│           │   ├── api.js                        # Funções centralizadas de fetch
+│           │   ├── autenticacao.js
+│           │   ├── catalogo.js
+│           │   ├── chat.js
+│           │   ├── explorar.js
+│           │   ├── meus-pedidos.js
+│           │   ├── novo-anuncio.js
+│           │   └── perfil.js
+│           └── styles/                           # Estilização modular com CSS3
 │
-├── frontend/                      # Interface Web da Aplicação
-│   ├── assets/                    # Logos e recursos visuais estáticos
-│   ├── pages/                     # Páginas HTML da aplicação
-│   │   ├── login.html             # Login do estudante
-│   │   ├── cadastro.html          # Cadastro de novo aluno
-│   │   ├── explorar.html          # Visualização geral de itens
-│   │   ├── catalogo.html          # Gerenciamento de itens e anúncios
-│   │   ├── novo-anuncio.html      # Formulário de criação de anúncio
-│   │   ├── meus-pedidos.html      # Acompanhamento de propostas de troca
-│   │   ├── chat.html              # Mensagens de negociação
-│   │   └── perfil.html            # Visualização/Edição do perfil
-│   ├── scripts/                   # Lógica JavaScript (comunicação com a API)
-│   └── styles/                    # Estilização modular com CSS3
+├── consultas_sql/                                # Scripts SQL de referência
+│   ├── DDL.sql                                   # Criação das tabelas
+│   ├── DML.sql                                   # Dados de exemplo
+│   ├── DQL.sql                                   # Consultas de referência
+│   └── view_procedure_function.sql               # Views, procedures e funções
 │
-├── docker-compose.yml             # Orquestrador do Banco PostgreSQL & pgAdmin
-├── package.json                   # Scripts adicionais e dependências node auxiliares
-└── README.md                      # Documentação oficial do projeto
+├── caso_uso/                                     # Diagramas de caso de uso
+├── docker-compose.yml                            # Orquestrador do PostgreSQL & pgAdmin
+├── package.json                                  # Scripts auxiliares Node.js
+└── README.md                                     # Documentação oficial do projeto
 ```
 
 ---
@@ -94,20 +125,22 @@ sistema-trocas-alunos/
 ### **Backend**
 - **Java 17** (Linguagem Principal)
 - **Spring Boot 4.x**
-  - **Spring Web** (Construção de APIs RESTful)
-  - **Spring Data JPA** (Persistência e ORM)
+  - **Spring Web MVC** (Construção de APIs RESTful + servidor de arquivos estáticos)
+  - **Spring Data JPA** (Persistência e ORM com Hibernate)
   - **Spring Security Crypto** (Criptografia com BCrypt)
-- **PostgreSQL Driver** (Conexão ao Banco)
+  - **Spring DevTools** (Hot reload em desenvolvimento)
+- **PostgreSQL Driver** (Conexão ao banco)
 - **Project Lombok** (Produtividade e redução de Boilerplate)
 
 ### **Frontend**
 - **HTML5 Semantic Markup**
 - **CSS3 Vanilla** (Variáveis nativas, Flexbox e CSS Grid para responsividade)
-- **JavaScript ES6+** (Comunicação Assíncrona via `fetch`, manipulação de DOM e SessionStorage)
+- **JavaScript ES6+** (Comunicação assíncrona via `fetch`, manipulação de DOM e `sessionStorage`)
 
 ### **Infraestrutura / DevOps**
 - **Docker & Docker Compose** (Containerização do PostgreSQL e pgAdmin 4)
 - **PostgreSQL 15** (Banco de dados relacional)
+- **Maven Wrapper** (`mvnw` / `mvnw.cmd`) — sem necessidade de Maven instalado
 
 ---
 
@@ -118,52 +151,78 @@ Antes de iniciar, certifique-se de ter instalado em sua máquina:
 1. [Git](https://git-scm.com)
 2. [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
 3. [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) ou superior
-4. [Maven 3.x](https://maven.apache.org/) (Opcional, pois o projeto inclui o wrapper `./mvnw`)
+4. Uma IDE Java (recomendado: [Eclipse](https://www.eclipse.org/) ou [IntelliJ IDEA](https://www.jetbrains.com/idea/))
 
 ---
 
 ### **Passo 1: Subir o Banco de Dados (Docker)**
+
 Na raiz do projeto (onde está o `docker-compose.yml`), execute no terminal:
+
 ```bash
 docker-compose up -d
 ```
-> Isso iniciará um container PostgreSQL na porta `5432` e o pgAdmin na porta `8081`.
+
+> Isso iniciará um container **PostgreSQL** na porta `5432` e o **pgAdmin 4** na porta `8081`.
 > - **pgAdmin:** Acesse [http://localhost:8081](http://localhost:8081) com o email `admin@gmail.com` e senha `admin12345`.
 
 ---
 
 ### **Passo 2: Iniciar o Backend (Spring Boot)**
-Acesse a pasta do backend e execute o comando de inicialização do Maven wrapper:
+
+Acesse a pasta `projeto/` e execute o Maven Wrapper:
+
 ```bash
-cd backend
 # No Windows:
+cd projeto
 mvnw.cmd spring-boot:run
 
 # No Linux/macOS:
+cd projeto
 ./mvnw spring-boot:run
 ```
-> O servidor backend estará rodando no endereço: `http://localhost:8080`
+
+> Ou importe o projeto `projeto/` diretamente no **Eclipse** como *Existing Maven Project* e execute a classe `SistemaTrocasApplication.java`.
+
+> ✅ O servidor estará disponível em: **`http://localhost:8080`**
+>
+> ℹ️ Ao iniciar, o `DataInitializer` populará automaticamente as tabelas `tb_curso` e `tb_categoria` caso estejam vazias.
 
 ---
 
-### **Passo 3: Rodar o Frontend**
-Como o frontend é composto por arquivos estáticos (`HTML`/`CSS`/`JS`), você pode executá-lo de duas formas:
-1. **Direto no navegador:** Abrir o arquivo `frontend/pages/login.html` dando um duplo clique.
-2. **Servidor Local (Recomendado):** Se possuir o Node.js, você pode instalar as dependências do projeto com `npm install` na raiz e rodar um servidor de desenvolvimento rápido, ou usar extensões como a *Live Server* do VSCode.
+### **Passo 3: Acessar a Aplicação**
+
+Como o frontend é **servido pelo próprio Spring Boot**, basta abrir o navegador e acessar:
+
+```
+http://localhost:8080
+```
+
+> Não é necessário abrir arquivos HTML diretamente ou usar Live Server. Todo o frontend está disponível via HTTP a partir do servidor Spring Boot.
 
 ---
 
 ## 🔌 API Endpoints
 
-A API do backend está estruturada sob os seguintes endpoints principais (`http://localhost:8080`):
+A API está disponível em `http://localhost:8080`:
 
 ### **Alunos (`/alunos`)**
 | Método | Endpoint | Descrição |
 |---|---|---|
 | `POST` | `/alunos/cadastro` | Realiza o cadastro de um novo aluno |
-| `GET` | `/alunos/login` | Realiza login do aluno (parâmetros `email` e `senha` via Query) |
+| `GET` | `/alunos/login` | Realiza login (parâmetros `email` e `senha` via Query) |
 | `GET` | `/alunos/{id}` | Busca os dados completos de um aluno pelo ID |
 | `PUT` | `/alunos/{id}` | Atualiza as informações do aluno |
+
+### **Cursos (`/cursos`)**
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `GET` | `/cursos` | Retorna todos os cursos disponíveis |
+
+### **Categorias (`/categorias`)**
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `GET` | `/categorias` | Retorna todas as categorias de itens |
 
 ### **Itens (`/itens`)**
 | Método | Endpoint | Descrição |
@@ -171,37 +230,49 @@ A API do backend está estruturada sob os seguintes endpoints principais (`http:
 | `GET` | `/itens` | Retorna todos os itens cadastrados no sistema |
 | `GET` | `/itens/{id}` | Busca um item específico por seu ID |
 | `GET` | `/itens/aluno?value={id}` | Retorna todos os itens anunciados por um aluno |
-| `GET` | `/itens/categoria?value={id}` | Retorna todos os itens pertencentes a uma categoria |
+| `GET` | `/itens/categoria?value={id}` | Retorna todos os itens de uma categoria |
 | `POST` | `/itens/cadastro` | Cadastra um novo anúncio de item |
 | `DELETE` | `/itens/{id}` | Exclui um anúncio específico |
+
+### **Imagens de Itens (`/imagens`)**
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `POST` | `/imagens/cadastro` | Vincula uma imagem a um item |
+| `DELETE` | `/imagens/{id}` | Remove uma imagem |
 
 ### **Trocas (`/trocas`)**
 | Método | Endpoint | Descrição |
 |---|---|---|
 | `GET` | `/trocas` | Retorna o histórico de todas as trocas solicitadas |
-| `POST` | `/trocas/cadastro` | Abre uma nova solicitação de troca de itens |
-| `PUT` | `/trocas/{id}` | Modifica o status de uma troca (ex: aceitar ou recusar) |
+| `GET` | `/trocas/aluno?value={id}` | Retorna trocas relacionadas a um aluno |
+| `POST` | `/trocas/cadastro` | Abre uma nova solicitação de troca |
+| `PUT` | `/trocas/{id}` | Modifica o status de uma troca (ACEITA, RECUSADA, etc.) |
 | `DELETE` | `/trocas/{id}` | Cancela/exclui uma transação de troca |
 
 ### **Mensagens (`/mensagens`)**
 | Método | Endpoint | Descrição |
 |---|---|---|
 | `GET` | `/mensagens` | Retorna todas as mensagens registradas |
-| `GET` | `/mensagens/troca?value={id}` | Obtém a conversa/chat associado a uma troca específica |
+| `GET` | `/mensagens/troca?value={id}` | Obtém o chat associado a uma troca específica |
 | `POST` | `/mensagens/cadastro` | Envia uma nova mensagem no chat de uma troca |
 
 ---
 
 ## 🗄️ Modelo de Dados
 
-O banco de dados é gerado automaticamente pelo Hibernate (`spring.jpa.hibernate.ddl-auto=update`) e contém as seguintes tabelas estruturadas:
-- **`tb_aluno`**: Armazena os dados dos alunos (nome, email, senha criptografada, ID do curso).
-- **`tb_curso`**: Cursos disponíveis no SENAI (ex: Desenvolvimento de Sistemas, Redes de Computadores).
-- **`tb_categoria`**: Categorias dos itens (ex: Ferramentas, Livros, Componentes Eletrônicos).
-- **`tb_item`**: Detalhes dos anúncios (nome, descrição, categoria, aluno proprietário).
-- **`tb_imagem_item`**: Links ou referências visuais vinculadas aos itens.
-- **`tb_troca`**: Registro das negociações contendo o `item_origem`, `item_destino`, `solicitante`, `receptor` e o `status` (PENDENTE, ACEITA, RECUSADA).
-- **`tb_mensagem`**: Conteúdo textual enviado no chat vinculado a cada troca.
+O banco de dados é gerado automaticamente pelo Hibernate (`spring.jpa.hibernate.ddl-auto=update`) e contém as seguintes tabelas:
+
+| Tabela | Descrição |
+|---|---|
+| `tb_aluno` | Dados dos alunos (nome, email, senha criptografada, curso, foto) |
+| `tb_curso` | Cursos disponíveis no SENAI (populado automaticamente pelo `DataInitializer`) |
+| `tb_categoria` | Categorias dos itens (populado automaticamente pelo `DataInitializer`) |
+| `tb_item` | Anúncios de itens (nome, descrição, categoria, aluno proprietário) |
+| `tb_imagem_item` | Referências de imagens vinculadas aos itens |
+| `tb_troca` | Negociações contendo `item_origem`, `item_destino`, `solicitante`, `receptor` e `status` (PENDENTE, ACEITA, RECUSADA) |
+| `tb_mensagem` | Mensagens do chat vinculadas a cada troca |
+
+Scripts SQL de referência estão disponíveis em `consultas_sql/` (DDL, DML, DQL e views/procedures).
 
 ---
 
