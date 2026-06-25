@@ -304,3 +304,95 @@
     border-radius: var(--borda-raio-lg);
     border: 1px solid var(--cor-borda);
 }
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 768px) {
+    .pedidos-container {
+        padding: 24px var(--espacamento-md);
+    }
+
+    .pedidos-layout {
+        flex-direction: column;
+        gap: var(--espacamento-lg);
+    }
+
+    .pedidos-sidebar {
+        width: 100%;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        gap: var(--espacamento-sm);
+        padding: var(--espacamento-sm);
+    }
+
+    .nav-item {
+        flex: 1;
+        justify-content: center;
+        padding: var(--espacamento-sm) var(--espacamento-md);
+    }
+}
+
+@media (max-width: 600px) {
+    .pedidos-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .pedido-card {
+        flex-direction: column;
+        gap: var(--espacamento-md);
+        padding: var(--espacamento-md);
+    }
+
+    .pedido-image {
+        width: 100%;
+        height: 180px;
+    }
+
+    .pedido-actions {
+        width: 100%;
+    }
+
+    .action-buttons {
+        width: 100%;
+        display: flex;
+        gap: var(--espacamento-sm);
+    }
+
+    .action-buttons button {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Rastreador de progresso vertical no celular */
+    .progress-tracker {
+        flex-direction: column;
+        gap: var(--espacamento-md);
+        align-items: flex-start;
+    }
+
+    .progress-tracker::before {
+        left: 20px;
+        top: 24px;
+        width: 2px;
+        height: calc(100% - 40px);
+        background-color: var(--cor-borda);
+    }
+
+    .progress-step {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--espacamento-md);
+        text-align: left;
+        width: 100%;
+    }
+
+    .step-label {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+    }
+}

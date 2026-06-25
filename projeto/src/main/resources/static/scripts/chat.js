@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const chatHeaderName     = document.querySelector('.chat-header__name');
     const chatHeaderStatus   = document.querySelector('.chat-header__status');
     const finalizeBtn        = document.querySelector('.chat-header__finalize-btn');
+    const chatContainer      = document.querySelector('.chat-container');
+    const backBtn            = document.querySelector('.chat-header__back-btn');
 
     let trocaAtiva       = null;
     let destinatarioAtivo = null;
@@ -213,6 +215,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         trocaAtiva        = troca.id;
         destinatarioAtivo = outraPessoa;
 
+        if (chatContainer) {
+            chatContainer.classList.add('chat-container--active-chat');
+        }
+
         // Atualiza cabeçalho do chat
         if (chatHeaderAvatar) {
             chatHeaderAvatar.alt = nomePessoa;
@@ -348,6 +354,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (sendBtn)   sendBtn.addEventListener('click', enviarMensagem);
     if (chatInput) chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') enviarMensagem(); });
+
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            if (chatContainer) chatContainer.classList.remove('chat-container--active-chat');
+            definirEstadoSemConversa();
+            // Desativa todos na sidebar
+            conversationList.querySelectorAll('.conversation-item').forEach(c => {
+                c.style.background = '';
+                c.dataset.ativo    = 'false';
+            });
+            trocaAtiva = null;
+            destinatarioAtivo = null;
+        });
+    }
 
     // ─── Botão Finalizar Troca ─────────────────────────────────────────────
     if (finalizeBtn) {

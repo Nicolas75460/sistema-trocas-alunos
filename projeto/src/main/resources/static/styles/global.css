@@ -871,11 +871,59 @@ main {
 }
 
 /* ============================================
-   RESPONSIVIDADE - BREAKPOINTS
+   RESPONSIVIDADE - BREAKPOINTS E MENU
    ============================================ */
+/* Hambúrguer */
+.header__hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-texto-secundario);
+    padding: var(--espacamento-xs);
+    border-radius: var(--borda-raio-md);
+    transition: all var(--transicao-normal);
+}
+
+.header__hamburger:hover {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
 @media (max-width: 1024px) {
+    .header__hamburger {
+        display: block;
+    }
+
     .header__nav {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--cor-fundo-card);
+        border-bottom: 1px solid var(--cor-borda);
+        padding: var(--espacamento-md) var(--espacamento-xl);
+        gap: var(--espacamento-md);
+        box-shadow: var(--sombra-md);
+        z-index: 1000;
+    }
+
+    .header__nav.header__nav--open {
+        display: flex;
+    }
+
+    .header__nav-link {
+        width: 100%;
+        padding: var(--espacamento-sm) 0;
+        border-bottom: 1px solid var(--cor-fundo);
+    }
+
+    .header__nav-link--active {
+        border-bottom: 2px solid var(--cor-primaria);
+        padding-bottom: 4px;
+        width: fit-content;
     }
 }
 
@@ -892,6 +940,15 @@ main {
         --fonte-tamanho-3xl: 24px;
         --fonte-tamanho-2xl: 20px;
     }
+
+    /* Otimizações globais de layout */
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {
@@ -901,6 +958,16 @@ main {
 
     .container {
         padding: 0 var(--espacamento-md);
+    }
+
+    /* Reduzir paddings de botões do header */
+    .auth-header-link {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .grid-cols-4, .grid-cols-3, .grid-cols-2 {
+        grid-template-columns: 1fr;
     }
 }
 

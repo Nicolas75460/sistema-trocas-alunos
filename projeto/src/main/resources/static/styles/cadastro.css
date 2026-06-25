@@ -328,12 +328,24 @@
 /* Responsividade */
 @media (max-width: 600px) {
     .auth-card {
-        padding: 32px 24px;
+        padding: 32px 20px;
+        border-radius: var(--borda-raio-md);
     }
     
     .auth-footer-content {
         flex-direction: column;
         gap: var(--espacamento-sm);
         text-align: center;
+    }
+
+    .auth-social-proof {
+        flex-direction: column;
+        gap: var(--espacamento-sm);
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    .avatar-group {
+        justify-content: center;
     }
 }

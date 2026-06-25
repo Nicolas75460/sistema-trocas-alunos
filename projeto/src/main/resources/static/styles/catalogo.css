@@ -392,8 +392,35 @@
 }
 
 /* ============================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE E GAVETA DE FILTROS
    ============================================ */
+.btn-toggle-filters {
+    display: none;
+}
+
+.btn-close-filters {
+    display: none;
+    align-self: flex-end;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-texto-secundario);
+    padding: var(--espacamento-xs);
+    margin-bottom: var(--espacamento-md);
+}
+
+.filters-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1005;
+    transition: opacity var(--transicao-normal);
+}
+
 @media (max-width: 1200px) {
     .products-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -401,12 +428,42 @@
 }
 
 @media (max-width: 900px) {
-    .sidebar-filtros {
-        display: none;
+    .btn-toggle-filters {
+        display: flex;
+        align-items: center;
+        gap: 6px;
     }
+
+    .btn-close-filters {
+        display: block;
+    }
+
+    .sidebar-filtros {
+        position: fixed;
+        top: 0;
+        left: -280px; /* Escondido por padrão */
+        width: 280px;
+        height: 100%;
+        z-index: 1010;
+        box-shadow: var(--sombra-lg);
+        transition: left var(--transicao-normal);
+        padding: var(--espacamento-lg) var(--espacamento-md);
+        background-color: white;
+        overflow-y: auto;
+    }
+
+    .sidebar-filtros.sidebar-filtros--open {
+        left: 0; /* Desliza para dentro */
+    }
+
+    .filters-overlay.filters-overlay--open {
+        display: block;
+    }
+
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .catalogo-main {
         padding: 24px 20px;
     }
@@ -418,6 +475,23 @@
     }
     .catalogo-header {
         flex-direction: column;
+        align-items: stretch;
         gap: var(--espacamento-md);
+    }
+    .catalogo-header-actions {
+        justify-content: space-between;
+        width: 100%;
+    }
+    .btn-toggle-filters {
+        flex: 1;
+        justify-content: center;
+    }
+    .catalogo-sort {
+        flex: 1;
+        justify-content: flex-end;
+    }
+    .sort-dropdown {
+        width: 100%;
+        justify-content: space-between;
     }
 }

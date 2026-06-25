@@ -1,4 +1,4 @@
-﻿/**
+/**
  * api.js â€” Módulo central de comunicação com o backend Spring Boot (porta 8080)
  * Todas as páginas devem carregar este arquivo ANTES dos seus próprios scripts.
  */
@@ -217,10 +217,10 @@ const MensagemAPI = {
         apiFetch(`${API_BASE}/mensagens/cadastro`, { method: 'POST', body: JSON.stringify(mensagem) }),
 };
 
-// --- AUTO HIDE LOGIN ---
+// --- AUTO HIDE LOGIN & MOBILE MENU ---
 document.addEventListener('DOMContentLoaded', () => {
-    const loginLink = document.querySelector('.auth-header-link[href="login.html"]');
-    const cadastroLink = document.querySelector('.auth-header-link[href="cadastro.html"]');
+    const loginLink = document.querySelector('.auth-header-link[href$="login.html"]');
+    const cadastroLink = document.querySelector('.auth-header-link[href$="cadastro.html"]');
     const headerActions = document.querySelector('.header__actions');
     
     if (getSessao()) {
@@ -241,6 +241,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.reload(); // Recarrega a página conforme solicitado
             });
             headerActions.appendChild(btnSair);
+        }
+    }
+
+    // Injeção dinâmica do Menu Hambúrguer para Responsividade
+    const header = document.querySelector('.header');
+    const nav = document.querySelector('.header__nav');
+    if (header && nav) {
+        const hamburger = document.createElement('button');
+        hamburger.className = 'header__hamburger';
+        hamburger.setAttribute('aria-label', 'Menu de navegação');
+        hamburger.innerHTML = `
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="hamburger-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path class="hamburger-close" style="display:none;" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        `;
+        
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nav.classList.toggle('header__nav--open');
+            const openPath = hamburger.querySelector('.hamburger-open');
+            const closePath = hamburger.querySelector('.hamburger-close');
+            if (nav.classList.contains('header__nav--open')) {
+                openPath.style.display = 'none';
+                closePath.style.display = 'block';
+            } else {
+                openPath.style.display = 'block';
+                closePath.style.display = 'none';
+            }
+        });
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('header__nav--open') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('header__nav--open');
+                hamburger.querySelector('.hamburger-open').style.display = 'block';
+                hamburger.querySelector('.hamburger-close').style.display = 'none';
+            }
+        });
+
+        // Insere o hambúrguer no cabeçalho antes das ações do header
+        if (headerActions) {
+            header.insertBefore(hamburger, headerActions);
+        } else {
+            header.appendChild(hamburger);
         }
     }
 });

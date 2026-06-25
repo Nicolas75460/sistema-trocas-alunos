@@ -35,15 +35,20 @@
             </div>
             <a href="login.html" class="auth-header-link">Entrar</a>
             <a href="cadastro.html" class="auth-header-link">Criar Conta</a>
-            
         </div>
     </header>
+    
+    <!-- OVERLAY DE FILTROS MÓVEL -->
+    <div class="filters-overlay"></div>
 
     <!-- CONTAINER PRINCIPAL: LAYOUT 2 COLUNAS -->
     <div class="catalogo-layout container" style="max-width: 1200px; margin: 0 auto; padding-top: var(--espacamento-xl);">
 
         <!-- SIDEBAR DE FILTROS -->
         <aside class="sidebar-filtros">
+            <button class="btn-close-filters" aria-label="Fechar filtros">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
             <div class="sidebar-section">
                 <h3 class="sidebar-title">Categorias</h3>
                 <p class="sidebar-subtitle">Filtros de Troca</p>
@@ -97,21 +102,27 @@
             </div>
         </aside>
 
-        <!-- ÃREA PRINCIPAL -->
+        <!-- Ã REA PRINCIPAL -->
         <main class="catalogo-main">
             <div class="catalogo-header">
                 <div>
                     <h1 class="catalogo-title">Catálogo de Trocas</h1>
                     <p class="catalogo-subtitle">Encontre materiais técnicos, ferramentas e livros compartilhados<br>pela comunidade SENAI.</p>
                 </div>
-                <div class="catalogo-sort">
-                    <span class="sort-label">ORDENAR POR</span>
-                    <div class="sort-dropdown">
-                        <span class="sort-value">Mais Recentes</span>
-                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <div class="catalogo-header-actions" style="display: flex; gap: var(--espacamento-sm); align-items: center;">
+                    <button class="btn-toggle-filters" aria-label="Abrir filtros">
+                        <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                        Filtros
+                    </button>
+                    <div class="catalogo-sort">
+                        <span class="sort-label">ORDENAR POR</span>
+                        <div class="sort-dropdown">
+                            <span class="sort-value">Mais Recentes</span>
+                            <svg class="icon icon--sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div>        </div>
 
             <!-- GRID DE PRODUTOS -->
             <div class="products-grid">

@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const aluno = getSessao();
         if (!aluno) {
             alert('Você precisa estar logado para solicitar uma troca.');
-            window.location.href = 'login.html';
+            window.location.href = 'pages/login.html';
             return;
         }
 
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         // Redireciona para o chat passando o ID do item desejado
-        window.location.href = `chat.html?itemDesejado=${itemId}`;
+        window.location.href = `pages/chat.html?itemDesejado=${itemId}`;
     });
 
     // ─── Função auxiliar para renderizar itens ────────────────────────────

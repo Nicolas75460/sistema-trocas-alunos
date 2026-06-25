@@ -628,4 +628,71 @@ body {
     color: var(--cor-texto-secundario);
 }
 
+/* Botão Voltar no Chat */
+.chat-header__back-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #54656f;
+    padding: var(--espacamento-xs);
+    border-radius: var(--borda-raio-md);
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-header__back-btn:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--cor-texto);
+}
+
+/* Responsividade do Chat */
+@media (max-width: 768px) {
+    .chat-container {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 72px); /* Altura descontando o header */
+    }
+
+    .chat-sidebar {
+        width: 100% !important;
+        min-width: 100% !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 10;
+        transition: transform var(--transicao-normal);
+        background-color: white;
+    }
+
+    .chat-main {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 20;
+        transform: translateX(100%);
+        transition: transform var(--transicao-normal);
+    }
+
+    /* Mostrar a tela de mensagens quando o chat estiver ativo */
+    .chat-container.chat-container--active-chat .chat-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .chat-container.chat-container--active-chat .chat-main {
+        transform: translateX(0);
+    }
+
+    .chat-header__back-btn {
+        display: flex;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+}
+
 

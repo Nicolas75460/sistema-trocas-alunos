@@ -391,6 +391,18 @@
     .safety-section {
         flex-direction: column;
     }
+    .safety-image {
+        min-height: auto;
+        padding: 0 40px 40px;
+    }
+    .safety-image img {
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        display: block;
+    }
     .hero-title {
         font-size: 36px;
     }
@@ -401,6 +413,28 @@
         grid-template-columns: 1fr;
     }
     .safety-content {
-        padding: 30px;
+        padding: 30px 20px;
+    }
+    .safety-image {
+        padding: 0 20px 30px;
+    }
+    .hero-section {
+        padding: 40px 20px;
+        min-height: 320px;
+    }
+    .hero-title {
+        font-size: 28px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    /* Mover o botão FAB um pouco para não cobrir elementos no mobile */
+    .fab-btn {
+        right: 10px;
+        top: -50px;
     }
 }

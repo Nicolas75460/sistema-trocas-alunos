@@ -107,4 +107,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         });
     }
+
+    // ─── Gaveta de Filtros Responsiva ──────────────────────────────────────
+    const btnToggleFilters = document.querySelector('.btn-toggle-filters');
+    const btnCloseFilters = document.querySelector('.btn-close-filters');
+    const filtersOverlay = document.querySelector('.filters-overlay');
+    const sidebarFiltros = document.querySelector('.sidebar-filtros');
+
+    if (btnToggleFilters && sidebarFiltros) {
+        btnToggleFilters.addEventListener('click', () => {
+            sidebarFiltros.classList.add('sidebar-filtros--open');
+            if (filtersOverlay) filtersOverlay.classList.add('filters-overlay--open');
+        });
+    }
+
+    const fecharFiltros = () => {
+        if (sidebarFiltros) sidebarFiltros.classList.remove('sidebar-filtros--open');
+        if (filtersOverlay) filtersOverlay.classList.remove('filters-overlay--open');
+    };
+
+    if (btnCloseFilters) {
+        btnCloseFilters.addEventListener('click', fecharFiltros);
+    }
+    if (filtersOverlay) {
+        filtersOverlay.addEventListener('click', fecharFiltros);
+    }
 });
